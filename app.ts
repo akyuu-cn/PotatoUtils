@@ -4,7 +4,7 @@ import express from 'express';
 const app = express();
 
 const port = 80
-const sitename = "Potato Utils" //显示在网页标题上（ToolName | XXX）
+const sitename = "Potato Utils" //显示在网页标题上（ToolName | SiteName）
 
 app.listen(port,()=>{
   console.log(`PoatoUtils Server started on port ${port} `)
