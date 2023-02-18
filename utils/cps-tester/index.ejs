@@ -3,7 +3,8 @@
 
 <head>
     <%- include('../../template/head.ejs') %>
-    <title>CPS Tester | <%= sitename%></title>
+        <title>CPS Tester | <%= sitename%>
+        </title>
 </head>
 
 <body style="background-color: rgb(251, 251, 251)">
@@ -25,10 +26,38 @@
     <div class="row d-flex justify-content-center m-3">
         <div class="card" style="max-width: 950px;">
             <div class="card-body">
-                <h4 class="card-title">CPS Tester</h4>
-                <p class="card-text">
-                    rua!!!
+                <h3 class="card-title mb-3">CPS Tester - 鼠标点击速度测试</h3>
+                <p class="card-text m-0">
+                    CPS 即 Click Per Second，每秒点击次数。在本页面里有两种测量模式。
                 </p>
+                <p class="card-text m-0"><b>实时 CPS</b>：根据点击速度实时变化。</p>
+                <p class="card-text mt-0"><b>10S 平均值</b>：持续点击十秒，十秒后计算平均值。</p>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+
+                <h1 id="cpsText" class="card-title text-center">...</h1>
+            </div>
+            <div class="progress">
+                <div id="progress" class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="100"
+                    aria-valuemin="0" aria-valuemax="100"></div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
                 <div class="btn-group mb-3" role="group" aria-label="Basic example">
                     <button id="buttonMode1" onclick="buttonMode1()" style="font-size: 15px" type="button"
                         class="btn btn-secondary" data-mdb-color="dark">实时 CPS</button>
@@ -36,18 +65,8 @@
                         class="btn btn-outline-secondary" data-mdb-color="dark">10s 平均值</button>
                 </div><br />
 
-                <div class="card mb-3 text-center">
-                    <div class="card-body">
-                        <h2 id="cpsText" class="card-title">...</h5>
-                    </div>
-                    <div class="progress">
-                        <div id="progress" class="progress-bar" role="progressbar" style="width: 0%;"
-                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
 
 
-                    </div>
-
-                </div>
 
                 <div class="d-grid gap-2 mb-3" style="height: 200px">
                     <button id="buttonClick" onclick="buttonClick()" style="font-size: 20px" class="btn btn-primary"
@@ -55,10 +74,11 @@
                         Here!</button>
                 </div>
 
-
             </div>
         </div>
     </div>
+
+
 
 
     <script>
@@ -115,7 +135,7 @@
             } else if (mode == 2) {
 
                 click += 1
-                document.getElementById("cpsText").innerText = click + " Clicks"
+                document.getElementById("cpsText").innerText = click + " Click(s)"
                 if (intimer == false) {
                     timer = setInterval(() => {
                         a = document.getElementById("progress")
