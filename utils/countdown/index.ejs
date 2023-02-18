@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../../template/head.ejs') %>
+        <link href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css"
+            rel="stylesheet">
+        <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <title>Countdown | <%= sitename%>
+        </title>
+</head>
+
+<body style="background-color: rgb(251, 251, 251)">
+
+
+    <header>
+        <%- include('../../template/header.ejs') %>
+    </header>
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+                <h3 class="card-title mb-3">Countdown - 倒计时</h3>
+                <p class="card-text">
+                    内置上海高考倒计时，之后会支持自定义时间的倒计时。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+
+            <div class="card-body">
+                <h4 class="text-left" id="textCountdownName">距离 还剩：</h4>
+                <h1 id="countdownTime" class="card-title text-center mt-4">0 天 0 小时 0 分 0 秒</h1>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script>
+        let name = "2023 上海高考"
+        document.getElementById("textCountdownName").innerText = `距离 ${name} 还剩：`
+
+        let target = 1686099600000
+        updateCountdown()
+        setInterval(updateCountdown, 1000)
+
+        function updateCountdown() {
+            let date = new Date()
+            let u = target - date.getTime()
+            let d = Math.floor(u / 1000 / 60 / 60 / 24)
+            u -= d * 24 * 60 * 60 * 1000
+            let h = Math.floor(u / 1000 / 60 / 60)
+            u -= h * 60 * 60 * 1000
+            let m = Math.floor(u / 1000 / 60)
+            u -= m * 60 * 1000
+            let s = Math.floor(u / 1000)
+            document.getElementById("countdownTime").innerText = `${d} 天 ${h} 小时 ${m} 分 ${s} 秒`
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>
