@@ -146,6 +146,7 @@
             // 输入处理
             let input = document.getElementById("input").value
             input = input.replace("排名\t姓名\t称号", "").trim()
+            input = input.replace("排名\t姓名", "").trim() // 移动端没有称号一栏，奇怪的设计问题
             let line = input.split("\n")
 
 
