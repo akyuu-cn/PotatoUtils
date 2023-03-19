@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../../template/head.ejs') %>
+        <title>东方角色萌点偏好报告 | <%= sitename%>
+        </title>
+</head>
+
+<body style="background-color: rgb(251, 251, 251)">
+    <header>
+        <%- include('../../template/header.ejs') %>
+    </header>
+
+
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+                <h3 class="card-title mb-3">东方角色萌点偏好报告</h3>
+                <p class="card-text mt-0">
+                    你可以在 <a href="https://vp.uzkk.net/favorite/">幽紫 kk 的本命角色测试</a> 中获取角色偏好排行（排名数请选择 50）。<br />
+                    完成后复制<b> 测试结果 </b>表格中的所有内容，并粘贴在以下输入框中，系统会生成你的萌点偏好报告。<br/>
+                    <br/>* 萌点数据来自萌娘百科
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+
+                <div class="form-outline">
+                    <textarea class="form-control" id="input" rows="4"></textarea>
+                    <label class="form-label" for="input">在此粘贴测试结果</label>
+                </div>
+
+                <p class="mb-0">
+                    示例：
+                </p>
+                <p class="text-muted">
+                    排名 姓名 称号<br />
+                    1 梦月 女仆幻想<br />
+                    2 雾雨魔理沙 普通的魔法使<br />
+                    3 幻月 可爱的恶魔<br />
+                    4 小兔姬 在弹幕中梦见美的公主殿下<br />
+                    ...
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+
+                <div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" value="" id="moe2" />
+                        <label class="form-check-label" for="moe2">追加二设萌点</label>
+                    </div>
+                    <button id="buttonGenerate" onclick="buttonGenerate()" style="font-size: 15px" type="button"
+                        class="btn btn-primary" data-mdb-color="dark">生成</button>
+                    <button id="buttonGenerate" onclick="clearTable()" style="font-size: 15px" type="button"
+                        class="btn btn-primary" data-mdb-color="dark">清除表格</button>
+
+                </div>
+
+                <div>
+                    <table class="table mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">萌点</th>
+                                <th scope="col">偏好参考值</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table">
+                            <!-- blablabla -->
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+        var result = undefined
+
+
+        function getWeightByRank(rank, total) {
+            let weight = (1 / rank) - (1 / total)
+            return weight
+        }
+
+        async function getTagByChar(char, tagList, allowExtraTag) {
+            for await (let element of tagList) {
+                if (element.name == char) {
+                    if (allowExtraTag) {
+                        if (element.moe2 != "") { return element.moe + "、" + element.moe2 }
+                        else { return element.moe }
+
+                    }
+                    else { return element.moe }
+                }
+            }
+        }
+
+        async function getIndexOfTag(tag, tagData) {
+            let i = 0
+            for await (let element of tagData) {
+                if (element.tag == tag) {
+                    return i
+                }
+                i++
+            }
+            return -1
+        }
+
+        async function clearTable() {
+            document.getElementById("table").innerHTML = ""
+        }
+
+
+
+        async function buttonGenerate() {
+
+            // 清空表格
+            await clearTable()
+
+            // 是否追加二次设定萌点
+            moe2 = document.getElementById("moe2")
+            let allowExtraTag = moe2.checked
+
+
+            // 输入处理
+            let input = document.getElementById("input").value
+            input = input.replace("排名\t姓名\t称号", "").trim()
+            let line = input.split("\n")
+
+
+            let total = line.length // 总角色数
+
+
+            // 输入转array
+            let data = []
+            line.forEach(element => {
+                data.push(
+                    {
+                        "rank": element.split("\t")[0],
+                        "name": element.split("\t")[1]
+                    }
+                )
+            })
+
+
+            // 获取角色萌点数据源
+            let tagList
+
+            await fetch("../data/touhou-char-moe/data.json")
+                .then(response => response.json())
+                .then(json => tagList = json)
+                .catch(err => console.log('Data Request Failed', err))
+
+
+            // 计算偏好值
+            let tagData = []
+
+            for await (let char of data) {
+                allTag = await getTagByChar(char.name, tagList, allowExtraTag)
+                allTag = allTag.split("、")
+                for await (let tag of allTag) {
+                    let i = await getIndexOfTag(tag, tagData)
+                    if (i != -1) {
+                        tagData[i].value += getWeightByRank(char.rank, total)
+                    } else {
+                        tagData.push({ "tag": tag, "value": getWeightByRank(char.rank, total) })
+                    }
+                }
+            }
+
+
+
+
+            // 降序排序
+            tagData.sort((a, b) => {
+                return b.value - a.value
+            })
+
+            console.log(tagData)
+
+            // 写入result备用
+            result = tagData
+
+            // 写入统计表格
+            let table = document.getElementById("table")
+            let i = 0
+            for await (element of tagData) {
+                r = table.insertRow(i)
+                c1 = r.insertCell(0)
+                c2 = r.insertCell(1)
+                c3 = r.insertCell(2)
+                c1.innerHTML = i + 1
+                c2.innerHTML = element.tag
+                c3.innerHTML = Math.round(element.value * 10000) / 10000
+                i++
+            }
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>

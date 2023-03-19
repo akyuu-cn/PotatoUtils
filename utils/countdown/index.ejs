@@ -47,10 +47,17 @@
         document.getElementById("textCountdownName").innerText = `距离 ${name} 还剩：`
 
         let target = 1686099600000
-        updateCountdown()
-        setInterval(updateCountdown, 1000)
+        update()
+        setInterval(update, 1000)
 
-        function updateCountdown() {
+
+        function setCountdown(){
+            name = document.getElementById("customName")
+            targe = document.getElementById("customTarget")
+            // let date =  new Date()
+        }
+
+        function update() {
             let date = new Date()
             let u = target - date.getTime()
             let d = Math.floor(u / 1000 / 60 / 60 / 24)
