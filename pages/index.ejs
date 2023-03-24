@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../template/head.ejs') %>
+        <title>HUB | Potato Utils</title>
+
+</head>
+
+<body style="background-color: rgb(251, 251, 251)">
+    <header>
+        <%- include('../template/header.ejs') %>
+    </header>
+
+
+    <div class="container-md">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+
+            <% data.forEach(element=> { %>
+                <%- include('index/card.ejs',{"data":element}) %>
+            <% }) %>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

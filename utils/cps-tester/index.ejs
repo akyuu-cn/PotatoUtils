@@ -3,11 +3,17 @@
 
 <head>
     <%- include('../../template/head.ejs') %>
-        <title>CPS Tester | <%= sitename%>
+        <title>CPS 测试 | <%= sitename%>
         </title>
 </head>
 
 <body style="background-color: rgb(251, 251, 251)">
+
+    <header>
+        <%- include('../../template/header.ejs') %>
+    </header>
+
+
     <script>
         var mode = 1
         var click = 0
@@ -15,13 +21,6 @@
         var intimer = false
         var timer = null
     </script>
-
-    <header>
-        <%- include('../../template/header.ejs') %>
-    </header>
-
-
-
 
     <div class="row d-flex justify-content-center m-3">
         <div class="card" style="max-width: 950px;">
