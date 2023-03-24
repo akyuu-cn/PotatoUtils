@@ -1,16 +1,16 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light mb-3">
+<nav class="navbar navbar-expand-lg mb-3">
     <!-- Container wrapper -->
     <div class="container-fluid mt-0 mb-0 ms-2 me-2">
         <!-- Navbar brand -->
         <a class="navbar-brand mt-2 me-3 mt-lg-0 text-center" href="/">
-            <i class="fa-solid fa-wrench"></i>&nbsp;Potato Utils
+            <i class="fa-solid fa-wrench"></i>&nbsp;&nbsp;Potato Utils
         </a>
         <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
             data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
+            <i class="navbar-brand fa-solid fa-bars"></i>
         </button>
 
         <!-- Collapsible wrapper -->
@@ -32,9 +32,39 @@
             <!-- Right elements -->
             <div class="d-flex align-items-center">
                 <!-- Icon -->
-                <a id="github-icon" data-mdb-toggle="tooltip1" title="Github 仓库" href="https://github.com/akyuu-cn/PotatoUtils">
-                    <i class="fa-brands fa-github fa-xl"></i>
+                <script>
+                    var isDarkModeOn = false
+                    if (localStorage.getItem('isDarkModeOn') == "true") { // localStorage 里存的是 string
+                        let b = document.body
+                        b.classList.add('pu-dark')
+                        isDarkModeOn = true
+                    } else {
+                        let b = document.body
+                        b.classList.remove('pu-dark')
+                        isDarkModeOn = false
+                    }
+
+                </script>
+                <a id="dark-mode-switch" data-mdb-toggle="tooltip2" title="切换深色模式" onclick="
+                let b = document.body
+                if(!isDarkModeOn){
+                    b.classList.add('pu-dark')
+                    isDarkModeOn=true
+                    localStorage.setItem('isDarkModeOn',isDarkModeOn)
+                }else{
+                    b.classList.remove('pu-dark')
+                    isDarkModeOn=false
+                    localStorage.setItem('isDarkModeOn',isDarkModeOn)
+                }
+                ">
+                    <i class="fa-solid fa-circle-half-stroke fa-lg pu-navbar-icon"></i>
                 </a>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <a id="github-icon" data-mdb-toggle="tooltip1" title="Github 仓库"
+                    href="https://github.com/akyuu-cn/PotatoUtils">
+                    <i class="fa-brands fa-github fa-lg pu-navbar-icon" style="color:#000"></i>
+                </a>
+
             </div>
             <!-- Right elements -->
         </div>

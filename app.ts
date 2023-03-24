@@ -1,11 +1,11 @@
-import ejs from 'ejs'
-import express from 'express'
+import ejs, { fileLoader } from 'ejs'
+import express, { json } from 'express'
 import fetch from 'node-fetch'
+import fs from 'fs'
 
-const app = express();
+const app = express()
 
 
-const url = "http://localhost" // 主体链接
 const port = 80 // 运行端口
 const sitename = "Potato Utils" // 显示在网页标题上（ToolName | SiteName）
 
@@ -22,10 +22,14 @@ app.get('/utils/:name', (req, res) => {
 
 // js 请求处理
 app.get('/js/:name', (req, res) => {
-  ejs.renderFile(`js/${req.params.name}`).then(value => {
-    res.send(value)
-  })
+  res.send(fs.readFileSync(`js/${req.params.name}`))
 })
+
+// css 请求处理
+app.get('/css/:name', (req, res) => {
+  res.send(fs.readFileSync(`css/${req.params.name}`))
+})
+
 
 // data 请求处理
 app.get('/data/:name/:dname', (req, res) => {
@@ -36,12 +40,11 @@ app.get('/data/:name/:dname', (req, res) => {
 
 // 主页
 app.get('/', (req, res) => {
-fetch(`${url}/data/index/utils_list.json`).then(async (data) => {
-  let jsonData = await data.json()
-  ejs.renderFile(`pages/index.ejs`, {"data":jsonData}).then(value => {
+  let data = fs.readFileSync('data/index/utils_list.json', "utf-8")
+  let jsonData = JSON.parse(data)
+  ejs.renderFile(`pages/index.ejs`, { "data": jsonData }).then(value => {
     res.send(value)
   })
-})
 
 })
 
