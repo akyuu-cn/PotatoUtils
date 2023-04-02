@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../../template/head.ejs') %>
+        <title>UUID 生成器 | <%= sitename%>
+        </title>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../../template/header.ejs') %>
+    </header>
+
+
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+                <h3 class="card-title mb-3">UUID 生成器</h3>
+                <p class="card-text mt-0">
+                    UUID，即通用唯一识别码，是一种用于安全地生成唯一表示信息的算法。<br />
+                    此处提供的算法类型为 Version 4 （随机 UUID）<br /><br />
+                    详见 <a
+                        href="https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%94%AF%E4%B8%80%E8%AF%86%E5%88%AB%E7%A0%81">维基百科
+                        - 通用唯一识别码</a>。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+
+                <div class="mb-3 d-flex">
+                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">00000000-0000-0000-0000-000000000000</p>
+                    <i class="ms-2 align-self-center fa-solid fa-copy fa-lg" id="copy-icon" onclick="copy()"></i>
+
+                </div>
+
+                <button id="buttonGenerate" onclick="buttonGenerate()" style="font-size: 15px" type="button"
+                    class="btn btn-primary" data-mdb-color="dark">生成</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        function buttonGenerate() {
+            let e = document.getElementById("output")
+            e.classList.remove("active")
+            e.innerHTML = crypto.randomUUID()
+        }
+        function copy() {
+
+            let uuid = document.getElementById("output").innerText
+            let o = document.createElement("textarea")
+            o.value=uuid.trim()
+            document.body.appendChild(o)
+            o.select()
+            document.execCommand("copy")
+            o.remove()
+
+            var icon = document.getElementById("copy-icon")
+            icon.classList.remove("fa-copy")
+            icon.classList.add("fa-check")
+            setTimeout(() => {
+                icon.classList.remove("fa-check")
+                icon.classList.add("fa-copy")
+            },1000)
+
+        
+
+
+        }
+    </script>
+
+
+    <footer>
+        <%- include('../../template/footer.ejs') %>
+    </footer>
+
+</body>
+
+</html>

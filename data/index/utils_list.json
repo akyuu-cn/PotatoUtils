@@ -8,7 +8,7 @@
     {
         "id": "cps-tester",
         "title": "鼠标点击速度测试",
-        "description": "在线鼠标点击测试，支持平均、实时两种测算模式",
+        "description": "在线的鼠标点击速度测试，支持平均、实时两种测算模式。",
         "icon": "fa-solid fa-computer-mouse"
     },
     {
@@ -22,5 +22,11 @@
         "title": "东方角色萌点偏好报告",
         "description": "基于幽紫 kk 的本命角色测试进行的三次创作，可以生成你的个人萌点标签偏好报告。",
         "icon": "fa-solid fa-yin-yang"
+    },
+    {
+        "id": "uuid-gen",
+        "title": "UUID 生成器",
+        "description": "UUID 在线生成器。",
+        "icon": "fa-solid "
     }
 ]
