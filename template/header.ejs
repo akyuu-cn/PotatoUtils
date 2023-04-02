@@ -33,19 +33,17 @@
             <div class="d-flex align-items-center">
                 <!-- Icon -->
                 <script>
+                    // 在网页加载时读取深色模式配置并决定是否切换
                     var isDarkModeOn = false
                     if (localStorage.getItem('isDarkModeOn') == "true") { // localStorage 里存的是 string
                         let b = document.body
                         b.classList.add('pu-dark')
                         isDarkModeOn = true
-                    } else {
-                        let b = document.body
-                        b.classList.remove('pu-dark')
-                        isDarkModeOn = false
                     }
 
                 </script>
                 <a id="dark-mode-switch" data-mdb-toggle="tooltip2" title="切换深色模式" onclick="
+                // 深色模式切换按钮
                 let b = document.body
                 if(!isDarkModeOn){
                     b.classList.add('pu-dark')
