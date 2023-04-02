@@ -13,7 +13,7 @@
     },
     {
         "id": "mc-color-gen",
-        "title": "MC 十六进制颜色渐变生成器",
+        "title": "[WIP] MC 十六进制颜色渐变生成器",
         "description": "MC 高版本加入了十六进制颜色转义，本工具可以输出丝滑的彩色渐变文本。",
         "icon": "fa-solid fa-palette"
     },
