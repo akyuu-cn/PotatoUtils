@@ -1,8 +1,8 @@
 [
     {
         "id": "countdown",
-        "title": "倒计时",
-        "description": "实时更新、精准到秒、可自定义的倒计时。",
+        "title": "高考倒计时",
+        "description": "实时更新、精准到秒的高考倒计时。",
         "icon": "fa-solid fa-stopwatch"
     },
     {
@@ -27,6 +27,6 @@
         "id": "uuid-gen",
         "title": "UUID 生成器",
         "description": "UUID 在线生成器。",
-        "icon": "fa-solid "
+        "icon": "fa-solid fa-barcode"
     }
 ]

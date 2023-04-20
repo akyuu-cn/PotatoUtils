@@ -36,7 +36,8 @@
             <div class="card-body">
 
                 <div class="mb-3 d-flex">
-                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">00000000-0000-0000-0000-000000000000</p>
+                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">
+                        00000000-0000-0000-0000-000000000000</p>
                     <i class="ms-2 align-self-center fa-solid fa-copy fa-lg" id="copy-icon" onclick="copy()"></i>
 
                 </div>
@@ -66,11 +67,12 @@
             e.classList.remove("active")
             e.innerHTML = crypto.randomUUID()
         }
+
         function copy() {
 
             let uuid = document.getElementById("output").innerText
             let o = document.createElement("textarea")
-            o.value=uuid.trim()
+            o.value = uuid.trim()
             document.body.appendChild(o)
             o.select()
             document.execCommand("copy")
@@ -82,10 +84,7 @@
             setTimeout(() => {
                 icon.classList.remove("fa-check")
                 icon.classList.add("fa-copy")
-            },1000)
-
-        
-
+            }, 1000)
 
         }
     </script>

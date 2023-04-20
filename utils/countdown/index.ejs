@@ -18,7 +18,7 @@
             <div class="card-body">
                 <h3 class="card-title mb-3">Countdown - 倒计时</h3>
                 <p class="card-text">
-                    内置上海高考倒计时，之后会支持自定义时间的倒计时。
+                    内置上海高考倒计时。
                 </p>
             </div>
         </div>
@@ -28,47 +28,68 @@
         <div class="card" style="max-width: 950px;">
 
             <div class="card-body">
-                <h4 class="text-left" id="textCountdownName">距离 还剩：</h4>
-                <h1 id="countdownTime" class="card-title text-center mt-4">0 天 0 小时 0 分 0 秒</h1>
+                <h4 class="text-left" id="textCountdownName1">距离 还剩：</h4>
+                <h1 id="countdownTime1" class="card-title text-center mt-4">0 天 0 小时 0 分 0 秒</h1>
             </div>
 
+        </div>
+    </div>
 
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+
+            <div class="card-body">
+                <h4 class="text-left" id="textCountdownName2">距离 还剩：</h4>
+                <h1 id="countdownTime2" class="card-title text-center mt-4">0 天 0 小时 0 分 0 秒</h1>
+            </div>
 
         </div>
     </div>
 
     <script>
-        let name = "2023 上海高考"
-        document.getElementById("textCountdownName").innerText = `距离 ${name} 还剩：`
+        let name1 = "2023 上海高考"
+        let name2 = "2023 上海等级考"
+        document.getElementById("textCountdownName1").innerText = `距离 ${name1} 还剩：`
+        document.getElementById("textCountdownName2").innerText = `距离 ${name2} 还剩：`
 
-        let target = 1686099600000
+
+        let target1 = 1686099600000
+        let target2 = 1683334800000
+
         update()
         setInterval(update, 1000)
 
 
-        function setCountdown() {
-            name = document.getElementById("customName")
-            targe = document.getElementById("customTarget")
-            // let date =  new Date()
-        }
 
         function update() {
             let date = new Date()
-            let u = target - date.getTime()
-            let d = Math.floor(u / 1000 / 60 / 60 / 24)
-            u -= d * 24 * 60 * 60 * 1000
-            let h = Math.floor(u / 1000 / 60 / 60)
-            u -= h * 60 * 60 * 1000
-            let m = Math.floor(u / 1000 / 60)
-            u -= m * 60 * 1000
-            let s = Math.floor(u / 1000)
-            document.getElementById("countdownTime").innerText = `${d} 天 ${h} 小时 ${m} 分 ${s} 秒`
+
+
+            let u1 = target1 - date.getTime()
+            let d1 = Math.floor(u1 / 1000 / 60 / 60 / 24)
+            u1 -= d1 * 24 * 60 * 60 * 1000
+            let h1 = Math.floor(u1 / 1000 / 60 / 60)
+            u1 -= h1 * 60 * 60 * 1000
+            let m1 = Math.floor(u1 / 1000 / 60)
+            u1 -= m1 * 60 * 1000
+            let s1 = Math.floor(u1 / 1000)
+            document.getElementById("countdownTime1").innerText = `${d1} 天 ${h1} 小时 ${m1} 分 ${s1} 秒`
+
+            let u2 = target2 - date.getTime()
+            let d2 = Math.floor(u2 / 1000 / 60 / 60 / 24)
+            u2 -= d2 * 24 * 60 * 60 * 1000
+            let h2 = Math.floor(u2 / 1000 / 60 / 60)
+            u2 -= h2 * 60 * 60 * 1000
+            let m2 = Math.floor(u2 / 1000 / 60)
+            u2 -= m2 * 60 * 1000
+            let s2 = Math.floor(u2 / 1000)
+            document.getElementById("countdownTime2").innerText = `${d2} 天 ${h2} 小时 ${m2} 分 ${s2} 秒`
         }
     </script>
 
-<footer>
-    <%- include('../../template/footer.ejs') %>
-</footer>
+    <footer>
+        <%- include('../../template/footer.ejs') %>
+    </footer>
 
 
 </body>
