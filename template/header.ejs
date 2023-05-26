@@ -1,22 +1,14 @@
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg mb-3">
-    <!-- Container wrapper -->
     <div class="container-fluid mt-0 mb-0 ms-2 me-2">
-        <!-- Navbar brand -->
         <a class="navbar-brand mt-2 me-3 mt-lg-0 text-center" href="/">
             <i class="fa-solid fa-wrench"></i>&nbsp;&nbsp;Potato Utils
         </a>
-        <!-- Toggle button -->
         <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
             data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
             <i class="navbar-brand fa-solid fa-bars"></i>
         </button>
-
-        <!-- Collapsible wrapper -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
-            <!-- Left links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link" href="/">主页</a>
@@ -28,48 +20,55 @@
                     <a class="nav-link" href="https://akyuu.cn/">传送门</a>
                 </li>
             </ul>
-            <!-- Left links -->
-            <!-- Right elements -->
             <div class="d-flex align-items-center">
-                <!-- Icon -->
-                <script>
-                    // 在网页加载时读取深色模式配置并决定是否切换
-                    var isDarkModeOn = false
-                    if (localStorage.getItem('isDarkModeOn') == "true") { // localStorage 里存的是 string
-                        let b = document.body
-                        b.classList.add('pu-dark')
-                        isDarkModeOn = true
-                    }
-
-                </script>
-                <a id="dark-mode-switch" data-mdb-toggle="tooltip2" title="切换深色模式" onclick="
-                // 深色模式切换按钮
-                let b = document.body
-                if(!isDarkModeOn){
-                    b.classList.add('pu-dark')
-                    isDarkModeOn=true
-                    localStorage.setItem('isDarkModeOn',isDarkModeOn)
-                }else{
-                    b.classList.remove('pu-dark')
-                    isDarkModeOn=false
-                    localStorage.setItem('isDarkModeOn',isDarkModeOn)
-                }
-                ">
-                    <i class="fa-solid fa-circle-half-stroke fa-lg pu-navbar-icon"></i>
+                <a id="dark-mode-switch" data-mdb-toggle="tooltip2" title="切换深色模式" onclick="darkModeSwitch();buttonClickAnimation(this)">
+                    <i class="fa-solid fa-circle-half-stroke fa-xl pu-navbar-icon"></i>
                 </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a id="github-icon" data-mdb-toggle="tooltip1" title="Github 仓库"
+                <a id="github-icon" data-mdb-toggle="tooltip1" title="Github 仓库" onclick="buttonClickAnimation(this)"
                     href="https://github.com/akyuu-cn/PotatoUtils">
-                    <i class="fa-brands fa-github fa-lg pu-navbar-icon" style="color:#000"></i>
+                    <i class="fa-brands fa-github fa-xl pu-navbar-icon" style="color:#000"></i>
                 </a>
-
             </div>
-            <!-- Right elements -->
         </div>
-        <!-- Collapsible wrapper -->
-
-
     </div>
-    <!-- Container wrapper -->
 </nav>
-<!-- Navbar -->
+
+<!-- 深色模式脚本 -->
+<script>
+
+    // 在网页加载时读取深色模式配置并决定是否切换
+    var isDarkModeOn = false
+
+    if (localStorage.getItem('isDarkModeOn') == "true") { // localStorage 里存的是 string
+        let body = document.body
+        body.classList.add('pu-dark')
+        isDarkModeOn = true
+    }
+
+    // 深色模式切换按钮
+    function darkModeSwitch(){
+
+        let body = document.body
+        if (!isDarkModeOn) {
+            body.classList.add('pu-dark')
+            isDarkModeOn = true
+            localStorage.setItem('isDarkModeOn', isDarkModeOn)
+        } else {
+            body.classList.remove('pu-dark')
+            isDarkModeOn = false
+            localStorage.setItem('isDarkModeOn', isDarkModeOn)
+        }
+
+    }
+
+</script>
+
+<!-- 杂项脚本 -->
+<script>
+
+    // 按钮点击反馈动画
+    function buttonClickAnimation(elem){
+        elem.firstElementChild.classList.add('pu-button-animation')
+    }
+</script>

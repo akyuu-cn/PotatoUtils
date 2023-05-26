@@ -36,8 +36,7 @@
             <div class="card-body">
 
                 <div class="mb-3 d-flex">
-                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">
-                        00000000-0000-0000-0000-000000000000</p>
+                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">00000000-0000-0000-0000-000000000000</p>
                     <i class="ms-2 align-self-center fa-solid fa-copy fa-lg" id="copy-icon" onclick="copy()"></i>
 
                 </div>
@@ -78,7 +77,9 @@
             document.execCommand("copy")
             o.remove()
 
-            var icon = document.getElementById("copy-icon")
+            
+
+            let icon = document.getElementById("copy-icon")
             icon.classList.remove("fa-copy")
             icon.classList.add("fa-check")
             setTimeout(() => {
