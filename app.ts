@@ -29,6 +29,11 @@ app.get('/css/:name', (req, res) => {
   res.send(fs.readFileSync(`css/${req.params.name}`))
 })
 
+// resources 请求处理
+app.get('/resources/:name', (req, res) => {
+  res.send(fs.readFileSync(`resources/${req.params.name}`))
+})
+
 
 // data 请求处理
 app.get('/data/:utilsName/:name', (req, res) => {
