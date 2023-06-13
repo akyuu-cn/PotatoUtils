@@ -28,5 +28,11 @@
         "title": "UUID 生成器",
         "description": "UUID 在线生成器。",
         "icon": "fa-solid fa-barcode"
+    },
+    {
+        "id": "ja-kana-quiz",
+        "title": "日文假名记忆测试",
+        "description": "日文学习辅助工具。这是一个系统生成假名、用户输入罗马音的小测试，可用于检验对假名的掌握程度。",
+        "icon": "fa-solid fa-language"
     }
 ]

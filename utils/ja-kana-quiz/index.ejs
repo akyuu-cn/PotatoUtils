@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../../template/head.ejs') %>
+        <title>日文假名记忆测试 | <%= sitename%>
+        </title>
+</head>
+
+<body>
+
+    <header>
+        <%- include('../../template/header.ejs') %>
+    </header>
+
+    <div class="row d-flex justify-content-center mt-3 mx-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body">
+                <h3 class="card-title mb-3">日文假名记忆测试</h3>
+                <p class="card-text mt-0">
+                    日文学习辅助工具。这是一个系统生成假名、用户输入罗马音的小测试，可用于检验对假名的掌握程度。
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row d-flex justify-content-center" id="kana-quiz-outer">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body" id="kana-quiz-card" style="display: none">
+                <div id="kana-quiz-card-flexbox">
+                    <div class="d-flex">
+                        <h1 style="white-space: nowrap;" id="quiz-card-kana">あ</h1>
+                        <div class="form-outline ms-4" id="quiz-card-input-field">
+                            <input type="text" id="quiz-input-field" class="form-control" />
+                            <label class="form-label" for="quiz-input-field">按 Enter 键提交</label>
+                        </div>
+                    </div>
+                </div>
+                <h5 class="mt-4" id="quiz-input-info" style="display:none"></h5>
+                <p class="mt-4" id="quiz-status" style="display:none"></p>
+                <button id="buttonGenerate" onclick="buttonGoBack()" style="font-size: 15px" type="button"
+                    class="btn btn-primary mt-3" data-mdb-color="dark">返回</button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body" id="kana-settings-card">
+
+
+                <h5>生成范围：</h5>
+
+                <div class="d-flex mb-3" onclick="updatePreview()">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="kana-range" id="kana-range-1" />
+                        <label class="form-check-label" for="kana-range-1"> 仅平假名 </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="kana-range" id="kana-range-2" />
+                        <label class="form-check-label" for="kana-range-2"> 仅片假名 </label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="radio" name="kana-range" id="kana-range-12" />
+                        <label class="form-check-label" for="kana-range-12"> 平假名 + 片假名 </label>
+                    </div>
+                </div>
+
+                <h5>生成类型：</h5>
+
+                <div class="d-flex mb-3" onclick="updatePreview()">
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="kana-type-1" />
+                        <label class="form-check-label" for="kana-type-1">五十音</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="kana-type-2" />
+                        <label class="form-check-label" for="kana-type-2">浊音、半浊音</label>
+                    </div>
+                    <div class="form-check me-3">
+                        <input class="form-check-input" type="checkbox" value="" id="kana-type-3" />
+                        <label class="form-check-label" for="kana-type-3">拗音</label>
+                    </div>
+                </div>
+
+
+                <button id="buttonGenerate" onclick="buttonStart()" style="font-size: 15px" type="button"
+                    class="btn btn-primary" data-mdb-color="dark">开始测试</button>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row d-flex justify-content-center m-3">
+        <div class="card" style="max-width: 950px;">
+            <div class="card-body" id="kana-preview-card">
+                <h5>以下假名将会被随机生成：</h5>
+                <div id="kana-preview"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+
+
+        var kanaArray = undefined
+
+        let kanaArrayRandomized, textKana, textInput, textInfo, textStatus, quizStatus,
+            kanaIndex, thisKanaIsCorrect, thisKanaTimeUsed, thisKanaTimeStarted, totalQuestion,
+            correctQuestion, timeUsedTotal, timeUsedAvg, timeUsedMax, timeUsedMin, kana, previewText
+
+        previewArray = []
+
+        textKana = document.getElementById("quiz-card-kana")
+        textInput = document.getElementById("quiz-input-field")
+        textInfo = document.getElementById("quiz-input-info")
+        textStatus = document.getElementById("quiz-status")
+
+        fetch("../data/ja-kana-quiz/kana.json")
+            .then(response => response.json())
+            .then(json => kana = json)
+            .catch(err => console.log('Data Request Failed', err))
+
+        setTimeout(() => {
+            console.log(kana)
+        }, 1000);
+
+        textInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") { // 判断用户是否按下回车键
+                event.preventDefault() // 阻止默认行为
+                if (kanaArrayRandomized[kanaIndex].pron.includes(textInput.value)) {
+                    nextQuestion()
+                } else {
+                    textInfo.style["display"] = "block"
+                    textInfo.innerHTML = `回答错误！正确答案：${kanaArrayRandomized[kanaIndex].kana} - ${kanaArrayRandomized[kanaIndex].pron}`
+                    thisKanaIsCorrect = false
+                }
+                textInput.value = ""
+            }
+        })
+
+        async function updatePreview() {
+            let range1 = false, range2 = false, type1 = false, type2 = false, type3 = false
+
+            if (document.getElementById("kana-range-12").checked) {
+                range1 = true
+                range2 = true
+            } else {
+                if (document.getElementById("kana-range-1").checked) {
+                    range1 = true
+                }
+                if (document.getElementById("kana-range-2").checked) {
+                    range2 = true
+                }
+            }
+            if (document.getElementById("kana-type-1").checked) {
+                type1 = true
+            }
+            if (document.getElementById("kana-type-2").checked) {
+                type2 = true
+            }
+            if (document.getElementById("kana-type-3").checked) {
+                type3 = true
+            }
+
+            previewArray = []
+            kana.forEach(elem => {
+                if (elem.type == 1 && type1 == true) {
+                    if (elem.range == 1 && range1 == true) {
+                        previewArray.push(elem)
+                    } else
+                        if (elem.range == 2 && range2 == true) {
+                            previewArray.push(elem)
+                        }
+                } else
+                    if (elem.type == 2 && type2 == true) {
+                        if (elem.range == 1 && range1 == true) {
+                            previewArray.push(elem)
+                        } else
+                            if (elem.range == 2 && range2 == true) {
+                                previewArray.push(elem)
+                            }
+                    } else
+                        if (elem.type == 3 && type3 == true) {
+                            if (elem.range == 1 && range1 == true) {
+                                previewArray.push(elem)
+                            } else
+                                if (elem.range == 2 && range2 == true) {
+                                    previewArray.push(elem)
+                                }
+                        }
+            })
+
+
+            // console.log(range1, range2, type1, type2, type3);
+            // console.log(previewArray)
+
+            previewText = ""
+            previewArray.forEach(elem => {
+                previewText += elem.kana + " "
+            })
+
+            document.getElementById("kana-preview").innerHTML = previewText
+
+            kanaArray = previewArray
+        }
+
+
+        function switchToQuizGUI() {
+            document.getElementById("kana-settings-card").style["display"] = "none"
+            document.getElementById("kana-preview-card").style["display"] = "none"
+            document.getElementById("kana-quiz-card").style["display"] = "block"
+            document.getElementById("kana-quiz-outer").classList.add("mt-3")
+            document.getElementById("kana-quiz-outer").classList.add("mx-3")
+        }
+
+
+        function switchToSettingsGUI() {
+            document.getElementById("kana-settings-card").style["display"] = "block"
+            document.getElementById("kana-preview-card").style["display"] = "block"
+            document.getElementById("kana-quiz-card").style["display"] = "none"
+            document.getElementById("kana-quiz-outer").classList.remove("mt-3")
+            document.getElementById("kana-quiz-outer").classList.remove("mx-3")
+        }
+
+        function shuffleArray(arr) {
+            const newArr = arr.slice(); // 使用 slice() 方法拷贝数组
+            for (let i = newArr.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+            }
+            return newArr;
+        }
+
+        function buttonGoBack() {
+            document.getElementById("quiz-input-info").innerHTML = ""
+            document.getElementById("kana-quiz-card-flexbox").style["display"] = "block"
+            document.getElementById("quiz-status").innerHTML = ""
+            switchToSettingsGUI()
+        }
+
+
+
+        function buttonStart() {
+            if (kanaArray == undefined || kanaArray.length == 0) {
+                alert("至少选择一种假名！")
+                return
+            }
+
+            kanaArrayRandomized = shuffleArray(kanaArray)
+
+            // console.log(kanaArray)
+            // console.log(kanaArrayRandomized)
+
+            switchToQuizGUI()
+            textInput.focus()
+
+
+            quizStatus = [] // 用于存储答题时间、正确与否等数据
+            kanaIndex = 0 // 目前处于第几题
+
+            thisKanaIsCorrect = true
+            thisKanaTimeUsed = undefined
+            thisKanaTimeStarted = undefined
+
+            thisKanaTimeStarted = new Date().getTime()
+            textKana.innerHTML = kanaArrayRandomized[kanaIndex].kana
+
+
+            // let i = 0
+            // setInterval(() => {
+            //     textKana.innerHTML = kanaArrayRandomized[i].kana
+            //     i++
+            // }, 100);
+
+
+            // setTimeout(() => {
+            //     switchToSettingsGUI()
+            // }, 1000);
+        }
+
+        function nextQuestion() {
+            thisKanaTimeUsed = new Date().getTime() - thisKanaTimeStarted
+            quizStatus.push({ "correct": thisKanaIsCorrect, "time": thisKanaTimeUsed })
+
+
+            if (kanaIndex < kanaArrayRandomized.length - 1) {
+                kanaIndex++
+                thisKanaIsCorrect = true
+                thisKanaTimeStarted = new Date().getTime()
+                textKana.innerHTML = kanaArrayRandomized[kanaIndex].kana
+                textInfo.style["display"] = "none"
+            } else {
+                quizEnd()
+            }
+        }
+
+        function quizEnd() {
+            totalQuestion = kanaArrayRandomized.length
+            correctQuestion = 0
+            timeUsedTotal = 0
+            timeUsedAvg = 0
+            timeUsedMax = 0
+            timeUsedMin = 1145141919810
+
+            quizStatus.forEach(elem => {
+                if (elem.correct == true) {
+                    correctQuestion++
+                }
+
+                if (elem.time > timeUsedMax) {
+                    timeUsedMax = elem.time
+                }
+
+                if (elem.time < timeUsedMin) {
+                    timeUsedMin = elem.time
+                }
+
+                timeUsedTotal += elem.time
+            })
+
+            timeUsedAvg = Math.round(timeUsedTotal / totalQuestion)
+
+            textInfo.style["display"] = "block"
+            textInfo.innerHTML = `答题结束！`
+
+            document.getElementById("kana-quiz-card-flexbox").style["display"] = "none"
+
+            textStatus.style["display"] = "block"
+            textStatus.innerHTML = `你的正确率为 ${Math.floor(correctQuestion / totalQuestion * 100)}% (${correctQuestion}/${totalQuestion})<br/>
+                总计用时 ${timeUsedTotal / 1000} 秒，平均每个假名用时 ${timeUsedAvg / 1000} 秒<br/>
+                最长回答用时 ${timeUsedMax / 1000} 秒，最短回答用时 ${timeUsedMin / 1000} 秒`
+
+        }
+
+    </script>
+
+
+    <footer>
+        <%- include('../../template/footer.ejs') %>
+    </footer>
+
+</body>
+
+</html>
