@@ -1,0 +1,7 @@
+{
+    "//": "PotatoUtils 运行端口",
+    "port": 80,
+    "//":"",
+    "//": "显示在网页标题上的名称",
+    "sitename": "Potato Utils"
+}

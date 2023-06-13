@@ -5,10 +5,13 @@ import fs from 'fs'
 const app = express()
 
 
-const port = 80 // 运行端口
-const sitename = "Potato Utils" // 显示在网页标题上（ToolName | SiteName）
-let config = fs.readFileSync('config.yml')
+// 配置文件读取
+const config = JSON.parse(fs.readFileSync('config.json').toString())
 
+const port = config.port // 运行端口
+const sitename = config.sitename // 显示在网页标题上（ToolName | SiteName）
+
+// 启动端口监听
 app.listen(port, () => {
   console.log(`PoatoUtils Server started on port ${port} `)
 })
@@ -16,7 +19,7 @@ app.listen(port, () => {
 // utils 页面
 app.get('/utils/:name', (req, res) => {
   ejs.renderFile(`utils/${req.params.name}/index.ejs`, { "sitename": sitename })
-  .then(value => {res.send(value)})
+    .then(value => { res.send(value) })
 })
 
 // js 请求处理
@@ -46,6 +49,6 @@ app.get('/', (req, res) => {
   let jsonData = JSON.parse(data)
 
   ejs.renderFile(`pages/index.ejs`, { "data": jsonData })
-  .then(value => {res.send(value)})
+    .then(value => { res.send(value) })
 })
 
