@@ -49,6 +49,7 @@ app.get('/css/:name', (req, res) => {
       .then(value => { res.send(value) })
   }
 })
+
 // resources 请求处理
 app.get('/resources/:name', (req, res) => {
   try {
