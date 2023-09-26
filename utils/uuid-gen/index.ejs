@@ -36,22 +36,26 @@
             <div class="card-body">
 
                 <div class="mb-3 d-flex">
-                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">00000000-0000-0000-0000-000000000000</p>
+                    <p class="align-self-center mb-0 font-monospace" id="output" style="font-size: 1.5rem">
+                        00000000-0000-0000-0000-000000000000</p>
                     <i class="ms-2 align-self-center fa-solid fa-copy fa-lg" id="copy-icon" onclick="copy()"></i>
 
                 </div>
 
                 <button id="buttonGenerate" onclick="buttonGenerate()" style="font-size: 15px" type="button"
-                    class="btn btn-primary" data-mdb-color="dark">生成</button>
+                    class="btn btn-primary me-1" data-mdb-color="dark">生成</button>
+                <button id="buttonGenerate" onclick="buttonGenerate10x()" style="font-size: 15px" type="button"
+                    class="btn btn-primary" data-mdb-color="dark">生成10个</button>
+
             </div>
         </div>
     </div>
 
 
     <div class="row d-flex justify-content-center m-3">
-        <div class="card" style="max-width: 950px;">
+        <div class="card" style="max-width: 950px;display: none;" id="uuid-10x">
             <div class="card-body">
-
+                <p class="align-self-center mb-0 font-monospace" id="output-10" style="font-size: 1.5rem;"></p>
             </div>
         </div>
     </div>
@@ -67,6 +71,18 @@
             e.innerHTML = crypto.randomUUID()
         }
 
+        function buttonGenerate10x() {
+            let e = document.getElementById("output-10")
+            e.classList.remove("active")
+            let str = ""
+            for (i = 0; i < 10; i++) {
+                str += crypto.randomUUID()
+                str += "\n"
+            }
+            e.innerText = str
+            document.getElementById("uuid-10x").style["display"] = "block"
+        }
+
         function copy() {
 
             let uuid = document.getElementById("output").innerText
@@ -77,7 +93,7 @@
             document.execCommand("copy")
             o.remove()
 
-            
+
 
             let icon = document.getElementById("copy-icon")
             icon.classList.remove("fa-copy")
