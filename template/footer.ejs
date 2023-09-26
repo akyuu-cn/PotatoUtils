@@ -5,9 +5,8 @@
 
 
 <script>
-    (function () {
+    (async function () {
         document.getElementById("pu-version").innerText = `PotatoUtils v${puVersion}`
-
 
         function isPhone() {
             var info = navigator.userAgent
@@ -15,8 +14,13 @@
             return isPhone
         }
 
+        // hitokoto
         if (!isPhone()) {
-            document.getElementById("pu-slogan").innerHTML = "雨下给富人，也下给穷人；下给义人，也下给不义的人。其实，雨并不公道，因为下落在一个没有公道的世界上。"
+            const response = await fetch('https://v1.hitokoto.cn?c=a&c=b&c=c&c=d&c=e&c=f&c=g&c=h&c=i&c=j&c=k&max_length=15')
+            const { uuid, hitokoto: hitokotoText } = await response.json()
+            const hitokoto = document.getElementById("pu-slogan")
+            hitokoto.href = `https://hitokoto.cn/?uuid=${uuid}`
+            hitokoto.innerText = hitokotoText
         }
 
 
