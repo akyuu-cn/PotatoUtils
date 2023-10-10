@@ -17,33 +17,50 @@
     <div class="container">
 
 
-        <div class="card mt-3">
+
+
+
+        <div class="card text-center ">
             <div class="card-body">
+                <h3 class="card-title" id="preview"></h3>
+            </div>
+        </div>
 
 
-                <div class="card text-center ">
-                    <div class="card-body">
-                        <h3 class="card-title">预览</h3>
-                    </div>
-                </div>
+        <div class="row mt-3">
 
-
-                <div class="row mt-3">
-                    <div class="col text-center">
-                        <div class="card text-center ">
-                            <div class="card-body">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col text-center">
-                        <div class="card text-center ">
-                            <div class="card-body">
-                            </div>
-                        </div>
+            <div class="col text-center">
+                <div class="card text-center" id="color-start-card">
+                    <div class="card-body" style="height: 5rem;"
+                        onclick="document.getElementById('color-start-input').click()">
+                        <input id="color-start-input" type="color" style="display: none;"></input>
                     </div>
                 </div>
             </div>
+
+            <div class="col text-center">
+                <div class="card text-center" id="color-end-card">
+                    <div class="card-body" style="height: 5rem;"
+                        onclick="document.getElementById('color-end-input').click()">
+                        <input id="color-end-input" type="color" style="display: none;"></input>
+                    </div>
+                </div>
+            </div>
+
         </div>
+
+        <div class="form-outline mt-3">
+            <input type="text" id="text-input" class="form-control" />
+            <label class="form-label" for="text-input">输入需要应用渐变的字符串</label>
+        </div>
+
+        <button id="buttonGenerate" onclick="buttonGenerate()" style="font-size: 15px" type="button"
+            class="btn btn-primary mt-3" data-mdb-color="dark">生成</button>
+
+        <div class="form-outline mt-3">
+            <textarea class="form-control" id="output" rows="4" readonly>- 输出结果 -</textarea>
+        </div>
+
     </div>
 
 
@@ -53,6 +70,94 @@
         <%- include('../../template/footer.ejs') %>
     </footer>
 
+
+    <script>
+        let colorStartPickerElement = document.getElementById("color-start-input")
+        let colorStartCardElement = document.getElementById("color-start-card")
+
+        colorStartPickerElement.addEventListener("input", () => {
+            colorStartCardElement.style["background-color"] = colorStartPickerElement.value
+        })
+
+        let colorEndPickerElement = document.getElementById("color-end-input")
+        let colorEndCardElement = document.getElementById("color-end-card")
+
+        colorEndPickerElement.addEventListener("input", () => {
+            colorEndCardElement.style["background-color"] = colorEndPickerElement.value
+        })
+
+
+        function generateText(str, start, end) {
+            let redStart = start.substring(1, 3)
+            let greenStart = start.substring(3, 5)
+            let blueStart = start.substring(5, 7)
+
+            let redEnd = end.substring(1, 3)
+            let greenEnd = end.substring(3, 5)
+            let blueEnd = end.substring(5, 7)
+
+            let length = str.length
+
+            let redStartInt = parseInt(redStart, 16)
+            let greenStartInt = parseInt(greenStart, 16)
+            let blueStartInt = parseInt(blueStart, 16)
+
+            let redEndInt = parseInt(redEnd, 16)
+            let greenEndInt = parseInt(greenEnd, 16)
+            let blueEndInt = parseInt(blueEnd, 16)
+
+            let redStep = Math.floor((redEndInt - redStartInt) / (length))
+            let greenStep = Math.floor((greenEndInt - greenStartInt) / (length))
+            let blueStep = Math.floor((blueEndInt - blueStartInt) / (length))
+
+            if (redStep < 0) { redStep += 1 }
+            if (greenStep < 0) { greenStep += 1 }
+            if (blueStep < 0) { blueStep += 1 }
+
+            let _str = ""
+            for (i = 0; i < length; i++) {
+                let R = (redStartInt + redStep * i).toString(16)
+                console.log((redStartInt + redStep * i));
+                let G = (greenStartInt + greenStep * i).toString(16)
+                let B = (blueStartInt + blueStep * i).toString(16)
+
+                if (R.length == 1) {
+                    R = "0" + R
+                }
+
+                if (G.length == 1) {
+                    G = "0" + G
+                }
+
+                if (B.length == 1) {
+                    B = "0" + B
+                }
+
+
+                _str += `#${R}${G}${B}${str[i]}`
+            }
+
+            return _str
+        }
+
+        function buttonGenerate() {
+            colorStart = colorStartPickerElement.value
+            colorEnd = colorEndPickerElement.value
+            text = document.getElementById("text-input").value
+            let outputElement = document.getElementById("output")
+            let result = generateText(text, colorStart, colorEnd)
+            outputElement.innerText = result
+            console.log(result);
+
+            let previewElement = document.getElementById("preview")
+            previewElement.innerHTML = ""
+            for (i = 0; i < (result.length / 8); i++) {
+                previewElement.innerHTML += `<span style="color: #${result.substring(8 * i + 1, 8 * i + 1 + 6)};white-space: nowrap;">${text[i]}</span>`
+            }
+
+
+        }
+    </script>
 
 </body>
 

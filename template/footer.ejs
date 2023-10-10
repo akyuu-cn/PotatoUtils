@@ -83,6 +83,7 @@
         --pu-btn-bg-color: #78aaff;
         --pu-btn-bg-color-hover: #aac9ff;
         --pu-text-muted: #a2a2a2;
+        --pu-readonly-bg-color: #222222;
     }
 
     body {
@@ -161,6 +162,11 @@
 
     .text-muted {
         color: var(--pu-text-muted) !important;
+        transition-duration: 300ms !important;
+    }
+
+    .form-control[readonly]{
+        background-color: var(--pu-readonly-bg-color) !important;
         transition-duration: 300ms !important;
     }
 </style>
