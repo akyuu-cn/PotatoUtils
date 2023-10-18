@@ -124,16 +124,12 @@
                 if (R.length == 1) {
                     R = "0" + R
                 }
-
                 if (G.length == 1) {
                     G = "0" + G
                 }
-
                 if (B.length == 1) {
                     B = "0" + B
                 }
-
-
                 _str += `#${R}${G}${B}${str[i]}`
             }
 
@@ -146,8 +142,7 @@
             text = document.getElementById("text-input").value
             let outputElement = document.getElementById("output")
             let result = generateText(text, colorStart, colorEnd)
-            outputElement.innerText = result
-            console.log(result);
+            outputElement.innerText = result.replace(/#/g, "§#")
 
             let previewElement = document.getElementById("preview")
             previewElement.innerHTML = ""
