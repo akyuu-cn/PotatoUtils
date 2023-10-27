@@ -2,6 +2,7 @@ import ejs from 'ejs'
 import express from 'express'
 import fs from 'fs'
 import * as logger from './logger'
+import * as stats from './stats'
 
 const app = express()
 
@@ -10,8 +11,9 @@ const config = JSON.parse(fs.readFileSync('config.json').toString())
 
 const port: Number = config.port // 运行端口
 const sitename: String = config.sitename // 显示在网页标题上（ToolName | SiteName）
-const debuglog: Boolean = config.debuglog // 是否输出调试日志
 
+logger.init() // 初始化日志模块
+stats.init() // 初始化统计模块
 
 // utils 页面
 app.get('/utils/:name', (req, res) => {
@@ -19,6 +21,7 @@ app.get('/utils/:name', (req, res) => {
     .then(value => {
       res.send(value)
       logger.info(`utils:${req.params.name} rendered!`, "ejsRenderer")
+      stats.view("utils", `${req.params.name}`)
     }).catch((e) => {
       logger.error(e, "ejsRenderer")
       ejs.renderFile(`pages/error_page.ejs`)
@@ -30,7 +33,7 @@ app.get('/utils/:name', (req, res) => {
 app.get('/js/:name', (req, res) => {
   try {
     res.send(fs.readFileSync(`js/${req.params.name}`))
-    logger.debug(`js:${req.params.name} sended!`, "ejsRenderer", debuglog)
+    logger.debug(`js:${req.params.name} sended!`, "ejsRenderer")
   } catch (e) {
     logger.error(e, "jsRequest")
     ejs.renderFile(`pages/error_page.ejs`)
@@ -42,7 +45,7 @@ app.get('/js/:name', (req, res) => {
 app.get('/css/:name', (req, res) => {
   try {
     res.send(fs.readFileSync(`css/${req.params.name}`))
-    logger.debug(`css:${req.params.name} sended!`, "ejsRenderer", debuglog)
+    logger.debug(`css:${req.params.name} sended!`, "ejsRenderer")
   } catch (e) {
     logger.error(e, "cssRequest")
     ejs.renderFile(`pages/error_page.ejs`)
@@ -54,7 +57,7 @@ app.get('/css/:name', (req, res) => {
 app.get('/resources/:name', (req, res) => {
   try {
     res.send(fs.readFileSync(`resources/${req.params.name}`))
-    logger.debug(`resources:${req.params.name} sended!`, "ejsRenderer", debuglog)
+    logger.debug(`resources:${req.params.name} sended!`, "ejsRenderer")
   } catch (e) {
     logger.error(e, "resourcesRequest")
     ejs.renderFile(`pages/error_page.ejs`)
@@ -68,7 +71,7 @@ app.get('/data/:utilsName/:name', (req, res) => {
     res.send(fs.readFileSync(`data/${req.params.utilsName}/${req.params.name}`))
     logger.info(`data:${req.params.utilsName}:${req.params.name} sended!`, "ejsRenderer")
   } catch (e) {
-    logger.debug(e, "dataRequest", debuglog)
+    logger.debug(e, "dataRequest")
     ejs.renderFile(`pages/error_page.ejs`)
       .then(value => { res.send(value) })
   }
@@ -84,6 +87,23 @@ app.get('/', (req, res) => {
         res.send(value)
         logger.info(`mainpage rendered!`, "ejsRenderer")
       })
+    stats.view("page", "index")
+  } catch (e) {
+    logger.error(e, "ejsRenderer")
+  }
+})
+
+// 统计页面
+app.get('/stats/', (req, res) => {
+  try {
+    let data = fs.readFileSync('data/stats/stats.json', "utf-8")
+    let jsonData = JSON.parse(data)
+    ejs.renderFile(`pages/stats.ejs`, { "data": jsonData })
+      .then(value => {
+        res.send(value)
+        logger.info(`statspage rendered!`, "ejsRenderer")
+      })
+    stats.view("page", "stats")
   } catch (e) {
     logger.error(e, "ejsRenderer")
   }

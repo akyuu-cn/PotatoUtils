@@ -1,3 +1,5 @@
+import fs from 'fs'
+
 function getTimeString() {
     let str: String = ""
     let date = new Date()
@@ -30,8 +32,15 @@ function getTimeString() {
     return str
 }
 
-export function debug(t: any, p: String, tf: Boolean) {
-    if (tf) {
+var debugtf: Boolean
+
+export function init(){
+    const config = JSON.parse(fs.readFileSync('config.json').toString())
+    debugtf = config.debuglog // 是否输出调试日志
+}
+
+export function debug(t: any, p: String) {
+    if (debugtf) {
         console.log(`[${getTimeString()}] [${p}/DEBUG]: ${t}`)
     }
 }

@@ -9,8 +9,8 @@
         document.getElementById("pu-version").innerText = `PotatoUtils v${puVersion}`
 
         function isPhone() {
-            var info = navigator.userAgent
-            var isPhone = /mobile/i.test(info)
+            const info = navigator.userAgent
+            const isPhone = /mobile/i.test(info)
             return isPhone
         }
 
@@ -34,7 +34,6 @@
         bottom: 0;
         width: 100%;
         height: 2.5rem;
-
         font-size: 1rem;
     }
 
