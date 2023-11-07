@@ -9,7 +9,7 @@ export function init() {
         logger.info("Saving stats data...", "stats")
         fs.writeFileSync("data/stats/stats.json", JSON.stringify(statsJson))
         logger.info("Stats data saved!", "stats")
-    }, 60 * 1000)
+    }, 15 * 60 * 1000)
     logger.debug(JSON.stringify(statsJson), "stats")
 }
 
