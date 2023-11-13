@@ -38,28 +38,20 @@
 <script>
 
     // 在网页加载时读取深色模式配置并决定是否切换
-    var isDarkModeOn = false
 
     if (localStorage.getItem('isDarkModeOn') == "true") { // localStorage 里存的是 string
-        let body = document.body
-        body.classList.add('pu-dark')
-        isDarkModeOn = true
+        document.body.classList.add('pu-dark')
     }
 
     // 深色模式切换按钮
     function darkModeSwitch(){
-
-        let body = document.body
-        if (!isDarkModeOn) {
-            body.classList.add('pu-dark')
-            isDarkModeOn = true
-            localStorage.setItem('isDarkModeOn', isDarkModeOn)
+        if (localStorage.getItem('isDarkModeOn') == "true") {
+            document.body.classList.remove('pu-dark')
+            localStorage.setItem('isDarkModeOn', false)
         } else {
-            body.classList.remove('pu-dark')
-            isDarkModeOn = false
-            localStorage.setItem('isDarkModeOn', isDarkModeOn)
+            document.body.classList.add('pu-dark')
+            localStorage.setItem('isDarkModeOn', true)
         }
-
     }
 
 </script>
