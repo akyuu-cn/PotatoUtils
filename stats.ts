@@ -3,7 +3,7 @@ import * as logger from './logger'
 
 var statsJson: any
 
-export function init() {
+export function init(config: any) {
     statsJson = JSON.parse(fs.readFileSync("data/stats/stats.json").toString())
     setInterval(function () {
         logger.info("Saving stats data...", "stats")

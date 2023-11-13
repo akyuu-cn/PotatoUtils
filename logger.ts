@@ -4,38 +4,21 @@ function getTimeString() {
     let str: String = ""
     let date = new Date()
 
-    if (date.getHours() < 10) {
-        str += "0"
-        str += date.getHours().toString()
-    } else {
-        str += date.getHours().toString()
-    }
-
+    if (date.getHours() < 10) { str += "0" }
+    str += date.getHours().toString()
     str += ":"
-
-    if (date.getMinutes() < 10) {
-        str += "0"
-        str += date.getMinutes().toString()
-    } else {
-        str += date.getMinutes().toString()
-    }
-
+    if (date.getMinutes() < 10) { str += "0" }
+    str += date.getMinutes().toString()
     str += ":"
-
-    if (date.getSeconds() < 10) {
-        str += "0"
-        str += date.getSeconds().toString()
-    } else {
-        str += date.getSeconds().toString()
-    }
+    if (date.getSeconds() < 10) { str += "0" }
+    str += date.getSeconds().toString()
 
     return str
 }
 
 var debugtf: Boolean
 
-export function init(){
-    const config = JSON.parse(fs.readFileSync('config.json').toString())
+export function init(config: any) {
     debugtf = config.debuglog // 是否输出调试日志
 }
 

@@ -12,8 +12,8 @@ const config = JSON.parse(fs.readFileSync('config.json').toString())
 const port: Number = config.port // 运行端口
 const sitename: String = config.sitename // 显示在网页标题上（ToolName | SiteName）
 
-logger.init() // 初始化日志模块
-stats.init() // 初始化统计模块
+logger.init(config) // 初始化日志模块
+stats.init(config) // 初始化统计模块
 
 // utils 页面
 app.get('/utils/:name', (req, res) => {
