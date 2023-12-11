@@ -1,6 +1,6 @@
-import ejs from 'ejs'
-import express from 'express'
-import fs from 'fs'
+import * as ejs from 'ejs'
+import * as express from 'express'
+import * as fs from 'fs'
 import * as logger from './logger'
 import * as stats from './stats'
 
@@ -16,7 +16,7 @@ logger.init(config) // 初始化日志模块
 stats.init(config) // 初始化统计模块
 
 // utils 页面
-app.get('/utils/:name', (req, res) => {
+app.get('/utils/:name', (req: any, res: any) => {
   ejs.renderFile(`utils/${req.params.name}/index.ejs`, { "sitename": sitename })
     .then(value => {
       res.send(value)
@@ -29,8 +29,20 @@ app.get('/utils/:name', (req, res) => {
     })
 })
 
+// lib 请求处理
+app.get('/lib/*', (req: any, res: any) => {
+  try {
+    res.send(fs.readFileSync(`lib/${req.params[0]}`))
+    logger.debug(`lib:${req.params[0]} sended!`, "ejsRenderer")
+  } catch (e) {
+    logger.error(e, "libRequest")
+    ejs.renderFile(`pages/error_page.ejs`)
+      .then(value => { res.send(value) })
+  }
+})
+
 // js 请求处理
-app.get('/js/:name', (req, res) => {
+app.get('/js/:name', (req: any, res: any) => {
   try {
     res.send(fs.readFileSync(`js/${req.params.name}`))
     logger.debug(`js:${req.params.name} sended!`, "ejsRenderer")
@@ -42,7 +54,7 @@ app.get('/js/:name', (req, res) => {
 })
 
 // css 请求处理
-app.get('/css/:name', (req, res) => {
+app.get('/css/:name', (req: any, res: any) => {
   try {
     res.send(fs.readFileSync(`css/${req.params.name}`))
     logger.debug(`css:${req.params.name} sended!`, "ejsRenderer")
@@ -54,7 +66,7 @@ app.get('/css/:name', (req, res) => {
 })
 
 // resources 请求处理
-app.get('/resources/:name', (req, res) => {
+app.get('/resources/:name', (req: any, res: any) => {
   try {
     res.send(fs.readFileSync(`resources/${req.params.name}`))
     logger.debug(`resources:${req.params.name} sended!`, "ejsRenderer")
@@ -66,7 +78,7 @@ app.get('/resources/:name', (req, res) => {
 })
 
 // data 请求处理
-app.get('/data/:utilsName/:name', (req, res) => {
+app.get('/data/:utilsName/:name', (req: any, res: any) => {
   try {
     res.send(fs.readFileSync(`data/${req.params.utilsName}/${req.params.name}`))
     logger.info(`data:${req.params.utilsName}:${req.params.name} sended!`, "ejsRenderer")
@@ -78,7 +90,7 @@ app.get('/data/:utilsName/:name', (req, res) => {
 })
 
 // 主页
-app.get('/', (req, res) => {
+app.get('/', (req: any, res: any) => {
   try {
     let data = fs.readFileSync('data/index/utils_list.json', "utf-8")
     let jsonData = JSON.parse(data)
@@ -94,7 +106,7 @@ app.get('/', (req, res) => {
 })
 
 // 统计页面
-app.get('/stats/', (req, res) => {
+app.get('/stats/', (req: any, res: any) => {
   try {
     let data = fs.readFileSync('data/stats/stats.json', "utf-8")
     let jsonData = JSON.parse(data)

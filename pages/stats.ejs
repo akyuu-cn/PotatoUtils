@@ -3,6 +3,7 @@
 
 <head>
     <%- include('../template/head.ejs') %>
+        <script src="https://cdnjs.akyuu.cn/libs/chart.js/4.4.1/chart.umd.js"></script>
         <title>STATS | Potato Utils</title>
 
 </head>
@@ -19,6 +20,7 @@
         <div class="card">
             <div class="card-body d-flex flex-column">
                 <h3><b>This page is currently WIP :P</b></h3>
+                <div style="width: 500px;"><canvas id="chart1"></canvas></div><br />
             </div>
         </div>
         <div class="card mt-3" style="height:100%">
@@ -31,6 +33,46 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var data
+        init().then(gen)
+
+        async function init() {
+
+            await fetch("../data/stats/stats.json")
+                .then(response => response.json())
+                .then(json => data = json)
+                .catch(err => console.log('Data Request Failed', err))
+
+            setTimeout(() => {
+                console.log(data)
+            }, 1000)
+        }
+
+        function gen() {
+
+            data.sort((a, b) => b.valueView - a.valueView)
+
+            new Chart(
+                document.getElementById('chart1'),
+                {
+                    type: 'bar',
+                    data: {
+                        labels: data.map(row => `${row.type}:${row.id}`),
+                        datasets: [
+                            {
+                                label: 'View',
+                                data: data.map(row => row.valueView)
+                            }
+                        ]
+                    }
+                }
+            )
+        }
+
+
+    </script>
 
 
     <footer>
