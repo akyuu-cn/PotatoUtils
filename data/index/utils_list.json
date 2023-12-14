@@ -44,7 +44,13 @@
     {
         "id": "rand-gen",
         "title": "随机数生成器",
-        "description": "简单的在线随机数生成器",
+        "description": "简单的在线随机数生成器。",
         "icon": "fa-solid fa-shuffle"
+    },
+    {
+        "id": "bpm-tapper",
+        "title": "BPM 测算器",
+        "description": "通过点击按钮来测算 BPM。",
+        "icon": "fa-solid fa-headphones"
     }
 ]

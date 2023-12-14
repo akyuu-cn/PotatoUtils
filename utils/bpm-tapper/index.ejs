@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <%- include('../../template/head.ejs') %>
+        <title>BPM 测算器 | <%= sitename%>
+        </title>
+</head>
+
+<body>
+    <header>
+        <%- include('../../template/header.ejs') %>
+    </header>
+
+    <div class="container">
+
+        <div class="row d-flex justify-content-center m-3">
+            <div class="card">
+                <div class="card-body">
+                    <h3 class="card-title mb-3">BPM 测算器</h3>
+                    <p class="card-text">
+                        跟随节奏点击按钮即可获知BPM，空格键也可以代替鼠标点击。
+                    </p>
+                    <p class="card-text">
+                        3秒内没有操作或按下重置按钮时，会出现方括号。其代表此次测算已结束，再次点击可以进行新一次的测量。
+                    </p>
+                    <p class="card-text">
+                        需要注意的是，节拍类型只影响节拍的可视化，并不会影响 BPM。如果你不知道一首歌的节拍类型，那么忽略就好了。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row d-flex justify-content-center m-3">
+            <div class="card">
+                <div class="card-body">
+                    <h1 id="bpmText" class="card-title text-center">... BPM</h1>
+                    <p id="bpmShape" class="text-center mb-0">...</p>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="row d-flex justify-content-center m-3">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-2">
+                        <div>
+                            测算精度：
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="accuRadio" id="accuRadio1" value="0"
+                                checked />
+                            <label class="form-check-label" for="accuRadio1"> 到整数 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="accuRadio" value="1" id="accuRadio2" />
+                            <label class="form-check-label" for="accuRadio2"> 到.5 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="accuRadio" value="2" id="accuRadio3" />
+                            <label class="form-check-label" for="accuRadio3"> 到.1 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="accuRadio" value="3" id="accuRadio4" />
+                            <label class="form-check-label" for="accuRadio4"> 到.01 </label>
+                        </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <div>
+                            节拍类型：
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="4" id="beatRadio1"
+                                checked />
+                            <label class="form-check-label" for="beatRadio1"> 4/4 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="3" id="beatRadio2" />
+                            <label class="form-check-label" for="beatRadio2"> 3/4 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="6" id="beatRadio3" />
+                            <label class="form-check-label" for="beatRadio3"> 6/8 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="5" id="beatRadio4" />
+                            <label class="form-check-label" for="beatRadio4"> 5/4 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="7" id="beatRadio5" />
+                            <label class="form-check-label" for="beatRadio5"> 7/8 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="9" id="beatRadio6" />
+                            <label class="form-check-label" for="beatRadio6"> 9/8 </label>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="beatRadio" value="12" id="beatRadio7" />
+                            <label class="form-check-label" for="beatRadio7"> 12/8 </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center m-3">
+            <div class="card">
+                <div class="card-body">
+                    <button type="button" class="btn btn-outline-danger mb-2" data-mdb-ripple-init
+                        data-mdb-ripple-color="dark" onclick="buttonReset()">
+                        <i class="align-self-center fa-solid fa-rotate-right fa-lg"></i>
+                    </button>
+
+                    <div class="d-grid gap-2 mb-3" style="height: 300px">
+                        <button id="buttonClick" onclick="buttonClick()" style="font-size: 20px" class="btn btn-primary"
+                            type="button">Click
+                            Here!</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <footer>
+        <%- include('../../template/footer.ejs') %>
+    </footer>
+
+
+    <script>
+        const timeReset = 2000 // 3秒内没有点击则自动停止测量
+
+        const bpmTextElement = document.getElementById("bpmText")
+        const bpmShapeElement = document.getElementById("bpmShape")
+        const buttonClickElement = document.getElementById("buttonClick")
+
+        var timeStart
+        var timeLastClick
+        var clickCounts = 0
+        var isStarted = false
+        var accType
+        var beatType
+
+        function buttonClick() {
+            if (!isStarted) { init(); clickCounts-- }
+            clickCounts++
+            let timeNow = new Date().getTime()
+            timeLastClick = timeNow
+            let bpm
+            switch (accType) {
+                case 0:
+                    bpm = Math.round((60 / ((timeNow - timeStart) / 1000)) * clickCounts)
+                    break
+                case 1:
+                    bpm = (Math.round(((60 / ((timeNow - timeStart) / 1000)) * clickCounts) * 2) / 2).toFixed(1)
+                    break
+                case 2:
+                    bpm = (Math.round(((60 / ((timeNow - timeStart) / 1000)) * clickCounts) * 10) / 10).toFixed(1)
+                    break
+                case 3:
+                    bpm = (Math.round(((60 / ((timeNow - timeStart) / 1000)) * clickCounts) * 100) / 100).toFixed(2)
+                    break
+                default:
+                    break
+            }
+            if (clickCounts == 0) { bpmTextElement.innerText = "- BPM" } else { bpmTextElement.innerText = bpm + " BPM" }
+
+            if ((clickCounts % beatType == 0) && (clickCounts != 0)) { bpmShapeElement.innerHTML += "&nbsp;|&nbsp;" }
+            bpmShapeElement.innerText += "★"
+
+
+        }
+
+        function buttonReset() {
+            if (isStarted) { reset() }
+        }
+
+        function init() {
+            accType = parseInt(document.querySelector('input[name="accuRadio"]:checked').value) // 0:整 | 1:.5 | 2:.1 | 3:.01
+            beatType = parseInt(document.querySelector('input[name="beatRadio"]:checked').value)
+            bpmShapeElement.innerText = ""
+            timeStart = new Date().getTime()
+            isStarted = true
+        }
+
+        document.addEventListener('keydown', () => {
+            if (event.code === 'Space') {
+                buttonClickElement.click()
+                event.preventDefault()
+            }
+        })
+
+        function reset() {
+            bpmTextElement.innerText = `[ ${bpmTextElement.innerText} ]`
+            timeStart = undefined
+            isStarted = false
+            clickCounts = 0
+        }
+
+        setInterval(() => {
+            let timeNow = new Date().getTime()
+            if (isStarted && (timeNow - timeLastClick >= timeReset)) {
+                reset()
+            }
+        }, 1000)
+    </script>
+
+</body>
+
+</html>
