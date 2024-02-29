@@ -22,7 +22,7 @@
 
         <div class="card text-center ">
             <div class="card-body">
-                <h3 class="card-title" id="preview"></h3>
+                <h3 class="card-title" id="preview">[ 此处将显示预览 ]</h3>
             </div>
         </div>
 
@@ -46,20 +46,37 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <div class="form-outline mt-3">
-            <input type="text" id="text-input" class="form-control" />
-            <label class="form-label" for="text-input">输入需要应用渐变的字符串</label>
+
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="align-items-center">
+                    <div class="form-outline">
+                        <input type="text" id="text-input" class="form-control" />
+                        <label class="form-label" for="text-input">输入需要应用渐变的文本</label>
+                    </div>
+
+                </div>
+            </div>
         </div>
 
-        <button id="buttonGenerate" onclick="buttonGenerate()" style="font-size: 15px" type="button"
-            class="btn btn-primary mt-3" data-mdb-color="dark">生成</button>
-
-        <div class="form-outline mt-3">
-            <textarea class="form-control" id="output" rows="4" readonly>- 输出结果 -</textarea>
+        <div class="card mt-3">
+            <div class="card-body">
+                <div class="align-items-center">
+                    <button type="button" class="btn btn-outline-success me-1" data-mdb-ripple-init
+                        data-mdb-ripple-color="dark" onclick="copy()" id="copy-button">
+                        <i class="align-self-center fa-solid fa-copy fa-lg" id="copy-icon"
+                            style="transition: opacity 0.5s ease;"></i>
+                    </button>
+                    <div class="form-outline mt-3">
+                        <textarea class="form-control" id="output" rows="4" readonly>- 输出结果 -</textarea>
+                    </div>
+                </div>
+            </div>
         </div>
+
+
 
     </div>
 
@@ -77,6 +94,7 @@
 
         colorStartPickerElement.addEventListener("input", () => {
             colorStartCardElement.style["background-color"] = colorStartPickerElement.value
+            buttonGenerate()
         })
 
         let colorEndPickerElement = document.getElementById("color-end-input")
@@ -84,8 +102,20 @@
 
         colorEndPickerElement.addEventListener("input", () => {
             colorEndCardElement.style["background-color"] = colorEndPickerElement.value
+            buttonGenerate()
         })
 
+        let textInputElement = document.getElementById("text-input")
+        textInputElement.addEventListener("input", () => {
+            buttonGenerate()
+        })
+
+        colorStartPickerElement.value = "#57eaa6"
+        colorEndPickerElement.value = "#ff6600"
+        colorStartCardElement.style["background-color"] = colorStartPickerElement.value
+        colorEndCardElement.style["background-color"] = colorEndPickerElement.value
+        textInputElement.value = "Hello Minecraft!"
+        buttonGenerate()
 
         function generateText(str, start, end) {
             let redStart = start.substring(1, 3)
@@ -117,7 +147,6 @@
             let _str = ""
             for (i = 0; i < length; i++) {
                 let R = (redStartInt + redStep * i).toString(16)
-                console.log((redStartInt + redStep * i));
                 let G = (greenStartInt + greenStep * i).toString(16)
                 let B = (blueStartInt + blueStep * i).toString(16)
 
@@ -149,9 +178,31 @@
             for (i = 0; i < (result.length / 8); i++) {
                 previewElement.innerHTML += `<span style="color: #${result.substring(8 * i + 1, 8 * i + 1 + 6)};white-space: nowrap;">${text[i]}</span>`
             }
-
-
         }
+
+        function copy() {
+            var sourceText = document.getElementById("output")
+            var range = document.createRange()
+            range.selectNode(sourceText)
+            window.getSelection().removeAllRanges()
+            window.getSelection().addRange(range)
+            document.execCommand("copy")
+            window.getSelection().removeAllRanges()
+
+            const icon = document.getElementById("copy-icon")
+            icon.classList.remove("fa-copy")
+            icon.classList.add("fa-check")
+
+            const copyButton = document.getElementById("copy-button")
+            copyButton.addEventListener("mouseleave", function copyButtonRecoverEvent() {
+                const icon = document.getElementById("copy-icon")
+                icon.classList.add("fa-copy")
+                icon.classList.remove("fa-check")
+                const copyButton = document.getElementById("copy-button")
+                copyButton.removeEventListener("mouseleave", copyButtonRecoverEvent)
+            })
+        }
+
     </script>
 
 </body>
