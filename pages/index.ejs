@@ -22,12 +22,12 @@
             data-mdb-ripple-color="dark" style="font-size: 15px" onclick="switcherMeasure()">测算工具</button>
         <button type="button" id="type-switcher-special" class="btn btn-outline-warning" data-mdb-ripple-init
             data-mdb-ripple-color="dark" style="font-size: 15px" onclick="switcherSpecial()">有意思的小玩意</button>
-        <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark"
+        <!-- <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark"
             style="font-size: 15px">Info</button>
         <button type="button" class="btn btn-outline-light" data-mdb-ripple-init data-mdb-ripple-color="dark"
             style="font-size: 15px">Light</button>
         <button type="button" class="btn btn-outline-dark" data-mdb-ripple-init data-mdb-ripple-color="dark"
-            style="font-size: 15px">Dark</button>
+            style="font-size: 15px">Dark</button> -->
     </div>
 
     <div class="container-md mb-3">
@@ -125,6 +125,7 @@
             let e = elementSwitcherAll
             e.isOn = false
             e.classList.replace("btn-primary", "btn-outline-primary")
+            e.innerText = "显示所有"
             renderUtilsList()
         }
 
@@ -132,6 +133,7 @@
             let e = elementSwitcherAll
             e.isOn = true
             e.classList.replace("btn-outline-primary", "btn-primary")
+            e.innerText = "隐藏所有"
             renderUtilsList()
         }
 
