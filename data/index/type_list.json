@@ -1,0 +1,17 @@
+[
+    {
+        "id": "utils",
+        "display": "实用工具",
+        "icon": "fa-wrench"
+    },
+    {
+        "id": "measure",
+        "display": "测算工具",
+        "icon": "fa-ruler"
+    },
+    {
+        "id": "special",
+        "display": "有意思的小玩意",
+        "icon": "fa-star-of-david"
+    }
+]

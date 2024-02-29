@@ -3,54 +3,63 @@
         "id": "countdown",
         "title": "高考倒计时",
         "description": "实时更新、精准到秒的高考倒计时。",
-        "icon": "fa-solid fa-stopwatch"
+        "icon": "fa-solid fa-stopwatch",
+        "type": "utils"
     },
     {
         "id": "cps-tester",
         "title": "鼠标点击速度测试",
         "description": "在线的鼠标点击速度测试，支持平均、实时两种测算模式。",
-        "icon": "fa-solid fa-computer-mouse"
+        "icon": "fa-solid fa-computer-mouse",
+        "type": "measure"
     },
     {
         "id": "mc-color-gen",
         "title": "MC 十六进制颜色渐变生成器",
         "description": "MC 高版本加入了十六进制颜色转义，本工具可以输出丝滑的彩色渐变文本。",
-        "icon": "fa-solid fa-palette"
+        "icon": "fa-solid fa-palette",
+        "type": "utils"
     },
     {
         "id": "touhou-char-moe",
         "title": "东方角色萌点偏好报告",
         "description": "基于幽紫 kk 的本命角色测试进行的三次创作，可以生成你的个人萌点标签偏好报告。",
-        "icon": "fa-solid fa-yin-yang"
+        "icon": "fa-solid fa-yin-yang",
+        "type": "special"
     },
     {
         "id": "uuid-gen",
         "title": "UUID 生成器",
         "description": "UUID 在线生成器。",
-        "icon": "fa-solid fa-barcode"
+        "icon": "fa-solid fa-barcode",
+        "type": "utils"
     },
     {
         "id": "ja-kana-quiz",
         "title": "日文假名记忆测试",
         "description": "日文学习辅助工具。这是一个系统生成假名、用户输入罗马音的小测试，可用于检验对假名的掌握程度。",
-        "icon": "fa-solid fa-language"
+        "icon": "fa-solid fa-language",
+        "type": "utils"
     },
     {
         "id": "spg",
         "title": "强密码生成器",
         "description": "快速生成强密码，支持字符自定义。",
-        "icon": "fa-solid fa-star-of-life"
+        "icon": "fa-solid fa-star-of-life",
+        "type": "utils"
     },
     {
         "id": "rand-gen",
         "title": "随机数生成器",
         "description": "简单的在线随机数生成器。",
-        "icon": "fa-solid fa-shuffle"
+        "icon": "fa-solid fa-shuffle",
+        "type": "utils"
     },
     {
         "id": "bpm-tapper",
         "title": "BPM 测算器",
         "description": "通过点击按钮来测算 BPM。",
-        "icon": "fa-solid fa-headphones"
+        "icon": "fa-solid fa-headphones",
+        "type": "measure"
     }
 ]

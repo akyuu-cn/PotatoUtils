@@ -12,13 +12,28 @@
         <%- include('../template/header.ejs') %>
     </header>
 
+    <div class="container-md mb-3">
+        <button type="button" id="type-switcher-all" class="btn btn-primary" data-mdb-ripple-init
+            data-mdb-ripple-color="dark" style="font-size: 15px;font-weight:bold;" onclick="switcherAll()">显示所有</button>
+        &nbsp;
+        <button type="button" id="type-switcher-utils" class="btn btn-outline-success" data-mdb-ripple-init
+            data-mdb-ripple-color="dark" style="font-size: 15px" onclick="switcherUtils()">实用工具</button>
+        <button type="button" id="type-switcher-measure" class="btn btn-outline-danger" data-mdb-ripple-init
+            data-mdb-ripple-color="dark" style="font-size: 15px" onclick="switcherMeasure()">测算工具</button>
+        <button type="button" id="type-switcher-special" class="btn btn-outline-warning" data-mdb-ripple-init
+            data-mdb-ripple-color="dark" style="font-size: 15px" onclick="switcherSpecial()">有意思的小玩意</button>
+        <button type="button" class="btn btn-outline-info" data-mdb-ripple-init data-mdb-ripple-color="dark"
+            style="font-size: 15px">Info</button>
+        <button type="button" class="btn btn-outline-light" data-mdb-ripple-init data-mdb-ripple-color="dark"
+            style="font-size: 15px">Light</button>
+        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-init data-mdb-ripple-color="dark"
+            style="font-size: 15px">Dark</button>
+    </div>
 
     <div class="container-md mb-3">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3" id="utils-container">
 
-            <% data.forEach(element=> { %>
-                <%- include('index/card.ejs',{"data":element}) %>
-            <% }) %>
+            <h3 style="text-align: center;width: 100%;opacity: 50%;" class="mt-5">一切皆已遁入幻想</h3>
 
         </div>
 
@@ -27,6 +42,206 @@
     <footer>
         <%- include('../template/footer.ejs') %>
     </footer>
+
+    <script>
+        var utilsList, typeList
+        Promise.all([
+            fetch("../data/index/utils_list.json"),
+            fetch("../data/index/type_list.json")
+        ])
+            .then(([utils, types]) => {
+                Promise.all([utils.json(), types.json()])
+                    .then(([utils, types]) => {
+                        utilsList = utils
+                        typeList = types
+                        switcherAll() //默认开启全部分类
+                    })
+            })
+            .catch(err => console.error('One or more requests failed', err))
+
+        // (async function () {
+        //     fetch("../data/index/utils_list.json")
+        //         .then(response => response.json())
+        //         .then(json => utilsList = json)
+        //         .catch(err => console.log('Data Request Failed', err))
+        //     fetch("../data/index/type_list.json")
+        //         .then(response => response.json())
+        //         .then(json => typeList = json)
+        //         .catch(err => console.log('Data Request Failed', err))
+        // })().then(
+        //     switcherAll() //默认开启全部分类
+        // )
+
+        var elementSwitcherAll = document.getElementById("type-switcher-all")
+        var elementSwitcherUtils = document.getElementById("type-switcher-utils")
+        var elementSwitcherMeasure = document.getElementById("type-switcher-measure")
+        var elementSwitcherSpecial = document.getElementById("type-switcher-special")
+
+        var typeArray = ["utils", "measure", "special"]
+
+        function checkIfAllSwitcherOn() {
+            let tf = true
+            typeArray.forEach(type => {
+                if (!document.getElementById(`type-switcher-${type}`).isOn) {
+                    tf = false
+                }
+            })
+            if (tf) {
+                openAll()
+            }
+
+        }
+
+        function openSwitcher(type) {
+            let e = document.getElementById(`type-switcher-${type}`)
+            if (!e.isOn) { e.click() }
+        }
+
+        function closeSwitcher(type) {
+            let e = document.getElementById(`type-switcher-${type}`)
+            if (e.isOn) { e.click() }
+        }
+
+        function switcherAll() { //切换所有标签的状态
+            let e = elementSwitcherAll
+            e.isOn = !e.isOn
+            if (e.isOn) {
+                e.classList.replace("btn-outline-primary", "btn-primary")
+                e.innerText = "隐藏所有"
+                typeArray.forEach(type => {
+                    openSwitcher(type)
+                })
+            } else {
+                e.classList.replace("btn-primary", "btn-outline-primary")
+                e.innerText = "显示所有"
+                typeArray.forEach(type => {
+                    closeSwitcher(type)
+                })
+            }
+            renderUtilsList()
+        }
+
+        function closeAll() { //仅关闭All标签的状态，不影响其他标签
+            let e = elementSwitcherAll
+            e.isOn = false
+            e.classList.replace("btn-primary", "btn-outline-primary")
+            renderUtilsList()
+        }
+
+        function openAll() { //仅开启All标签的状态，不影响其他标签
+            let e = elementSwitcherAll
+            e.isOn = true
+            e.classList.replace("btn-outline-primary", "btn-primary")
+            renderUtilsList()
+        }
+
+        function switcherUtils() {
+            let e = elementSwitcherUtils
+            e.isOn = !e.isOn
+            if (e.isOn) {
+                e.classList.replace("btn-outline-success", "btn-success")
+            } else {
+                e.classList.replace("btn-success", "btn-outline-success")
+                closeAll()
+            }
+            checkIfAllSwitcherOn()
+            renderUtilsList()
+        }
+
+        function switcherMeasure() {
+            let e = elementSwitcherMeasure
+            e.isOn = !e.isOn
+            if (e.isOn) {
+                e.classList.replace("btn-outline-danger", "btn-danger")
+            } else {
+                e.classList.replace("btn-danger", "btn-outline-danger")
+                closeAll()
+            }
+            checkIfAllSwitcherOn()
+            renderUtilsList()
+        }
+
+        function switcherSpecial() {
+            let e = elementSwitcherSpecial
+            e.isOn = !e.isOn
+            if (e.isOn) {
+                e.classList.replace("btn-outline-warning", "btn-warning")
+            } else {
+                e.classList.replace("btn-warning", "btn-outline-warning")
+                closeAll()
+            }
+            checkIfAllSwitcherOn()
+            renderUtilsList()
+        }
+
+        function renderUtilsList() {
+            var typeSwitcher = []
+            for (let i = 0; i < typeList.length; i++) {
+                typeSwitcher[i] = { "id": typeList[i].id, "isOn": false }
+            }
+
+            function activateType(typeId) {
+                typeSwitcher = typeSwitcher.map(type => {
+                    if (type.id === typeId) {
+                        return { ...type, isOn: true } // 使用展开运算符创建一个新对象，修改 isOn 属性为 true
+                    }
+                    return type // 对于不需要修改的元素，直接返回原始元素
+                })
+            }
+
+            if (document.getElementById("type-switcher-all").isOn) {
+                activateType("all")
+            }
+            if (document.getElementById("type-switcher-utils").isOn) {
+                activateType("utils")
+            }
+            if (document.getElementById("type-switcher-measure").isOn) {
+                activateType("measure")
+            }
+            if (document.getElementById("type-switcher-special").isOn) {
+                activateType("special")
+            }
+
+            let ucStr = ""
+            utilsList.forEach(util => {
+                let typeDisplay
+                let type = typeSwitcher.find(type => (type.id === util.type) && (type.isOn))
+                if (type) {
+                    typeDisplay = typeList.find(type => type.id === util.type).display
+                    ucStr += `
+<div class="col">
+    <div class="card" style="height:100%">
+        <div class="card-body d-flex flex-column">
+            <h4 class="card-title mb-3">
+                <i class="${util.icon}"></i> ${util.title}
+            </h4>
+            <p class="card-text mt-0">
+                ${util.description}
+            </p>    
+            <div class="mt-auto d-flex">
+                <button type="button" class="btn btn-primary" style="font-size: 15px"
+                    onclick="window.location.href="\/utils\/${util.id}"">跳转</button>
+                <span class="ms-auto align-self-end" style="opacity: 50%;">${typeDisplay}</span>
+            </div>
+        </div>
+    </div>
+</div>
+                    `
+                }
+            })
+
+            let uc = document.getElementById("utils-container")
+
+            if (ucStr == "") {
+                ucStr = `<h3 style="text-align: center;width: 100%;opacity: 50%;" class="mt-5">一切皆已遁入幻想</h3>`
+            }
+
+            uc.innerHTML = ucStr
+
+
+        }
+
+    </script>
 
 </body>
 
