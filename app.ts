@@ -20,7 +20,7 @@ app.get('/utils/:name', (req: any, res: any) => {
   ejs.renderFile(`utils/${req.params.name}/index.ejs`, { "sitename": sitename })
     .then(value => {
       res.send(value)
-      logger.info(`utils:${req.params.name} rendered!`, "ejsRenderer")
+      logger.debug(`utils:${req.params.name} rendered!`, "ejsRenderer")
       stats.view("utils", `${req.params.name}`)
     }).catch((e) => {
       logger.error(e, "ejsRenderer")
@@ -81,7 +81,7 @@ app.get('/resources/:name', (req: any, res: any) => {
 app.get('/data/:utilsName/:name', (req: any, res: any) => {
   try {
     res.send(fs.readFileSync(`data/${req.params.utilsName}/${req.params.name}`))
-    logger.info(`data:${req.params.utilsName}:${req.params.name} sended!`, "ejsRenderer")
+    logger.debug(`data:${req.params.utilsName}:${req.params.name} sended!`, "ejsRenderer")
   } catch (e) {
     logger.debug(e, "dataRequest")
     ejs.renderFile(`pages/error_page.ejs`)
@@ -97,7 +97,7 @@ app.get('/', (req: any, res: any) => {
     ejs.renderFile(`pages/index.ejs`, { "data": jsonData })
       .then(value => {
         res.send(value)
-        logger.info(`mainpage rendered!`, "ejsRenderer")
+        logger.debug(`mainpage rendered!`, "ejsRenderer")
       })
     stats.view("page", "index")
   } catch (e) {
@@ -113,7 +113,7 @@ app.get('/stats/', (req: any, res: any) => {
     ejs.renderFile(`pages/stats.ejs`, { "data": jsonData })
       .then(value => {
         res.send(value)
-        logger.info(`statspage rendered!`, "ejsRenderer")
+        logger.debug(`statspage rendered!`, "ejsRenderer")
       })
     stats.view("page", "stats")
   } catch (e) {
@@ -130,3 +130,20 @@ try {
 } catch (e) {
   logger.error(e, "express")
 }
+
+
+// PotatoUtils API WIP//
+app.get('/api/ping', (req: any, res: any) => {
+  try {
+    let data = fs.readFileSync('data/stats/stats.json', "utf-8")
+    let jsonData = JSON.parse(data)
+    ejs.renderFile(`pages/stats.ejs`, { "data": jsonData })
+      .then(value => {
+        res.send(value)
+        logger.debug(`Ping request`, "PotatoUtilsAPI")
+      })
+    stats.view("api", "ping")
+  } catch (e) {
+    logger.error(e, "ejsRenderer")
+  }
+})
