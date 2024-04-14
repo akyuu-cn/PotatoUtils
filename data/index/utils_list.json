@@ -61,5 +61,12 @@
         "description": "通过点击按钮来测算 BPM。",
         "icon": "fa-solid fa-headphones",
         "type": "measure"
+    },
+    {
+        "id": "aime-generator",
+        "title": "AIME 卡号生成器",
+        "description": "一键生成 AIME 卡号及其数组形式。",
+        "icon": "fa-solid fa-address-card",
+        "type": "utils"
     }
 ]
