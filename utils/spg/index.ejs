@@ -29,7 +29,7 @@
             <div class="card">
                 <div class="card-body">
                     <label class="form-label" for="password-length-input">密码长度</label>
-                    <div class="range" data-mdb-range-init>
+                    <div class="range" id="length-range-div" data-mdb-range-init>
                         <input type="range" class="form-range" id="password-length-input" min="5" max="51" value="20" />
                     </div>
 
@@ -87,6 +87,7 @@
         passwordLengthInput.addEventListener("input", () => { update() })
         passwordCharInput.addEventListener("input", () => { update() })
         update()
+        maxInjector()
 
         function update() {
             const allchar = (passwordCharInput.value != "") ? passwordCharInput.value : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*"
@@ -126,7 +127,17 @@
             })
         }
 
-
+        function maxInjector(){
+            let rangeThumb=document.querySelector("#length-range-div .thumb-value");
+            if(rangeThumb==null) {
+                setTimeout(maxInjector, 50);
+            }
+            else{
+                passwordLengthInput.addEventListener("input", ()=>{
+                    if(passwordLengthInput.value==51) rangeThumb.innerHTML="max";
+                });
+            }
+        }
     </script>
 
 </body>
