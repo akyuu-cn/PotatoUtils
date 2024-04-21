@@ -95,7 +95,7 @@
             str2 = ""
             str2 += "{"
             for (let i = 0; i < 10; i++) {
-                str2 += parseInt(str1[i] + str1[i + 1], 16)
+                str2 += parseInt(str1[2 * i] + str1[(2 * i) + 1], 16)
                 str2 += ","
             }
             str2 = str2.substring(0, str2.length - 1)
