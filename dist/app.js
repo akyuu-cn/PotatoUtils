@@ -25,42 +25,6 @@ app.get('/utils/:name', (req, res) => {
             .then(value => { res.send(value); });
     });
 });
-// lib 请求处理
-app.get('/lib/*', (req, res) => {
-    try {
-        res.send(fs.readFileSync(`lib/${req.params[0]}`));
-        logger.debug(`lib:${req.params[0]} sended!`, "ejsRenderer");
-    }
-    catch (e) {
-        logger.error(e, "libRequest");
-        ejs.renderFile(`pages/error_page.ejs`)
-            .then(value => { res.send(value); });
-    }
-});
-// js 请求处理
-app.get('/js/:name', (req, res) => {
-    try {
-        res.send(fs.readFileSync(`js/${req.params.name}`));
-        logger.debug(`js:${req.params.name} sended!`, "ejsRenderer");
-    }
-    catch (e) {
-        logger.error(e, "jsRequest");
-        ejs.renderFile(`pages/error_page.ejs`)
-            .then(value => { res.send(value); });
-    }
-});
-// css 请求处理
-app.get('/css/:name', (req, res) => {
-    try {
-        res.send(fs.readFileSync(`css/${req.params.name}`));
-        logger.debug(`css:${req.params.name} sended!`, "ejsRenderer");
-    }
-    catch (e) {
-        logger.error(e, "cssRequest");
-        ejs.renderFile(`pages/error_page.ejs`)
-            .then(value => { res.send(value); });
-    }
-});
 // resources 请求处理
 app.get('/resources/:name', (req, res) => {
     try {
@@ -85,6 +49,7 @@ app.get('/data/:utilsName/:name', (req, res) => {
             .then(value => { res.send(value); });
     }
 });
+app.use(express.static('public')); // 静态文件目录
 // 主页
 app.get('/', (req, res) => {
     try {
