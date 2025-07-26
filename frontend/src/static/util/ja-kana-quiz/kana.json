@@ -1,0 +1,1644 @@
+[
+    {
+        "kana": "あ",
+        "pron": [
+            "a"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ア",
+        "pron": [
+            "a"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "い",
+        "pron": [
+            "i"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "イ",
+        "pron": [
+            "i"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "う",
+        "pron": [
+            "u"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ウ",
+        "pron": [
+            "u"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "え",
+        "pron": [
+            "e"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "エ",
+        "pron": [
+            "e"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "お",
+        "pron": [
+            "o"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "オ",
+        "pron": [
+            "o"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "か",
+        "pron": [
+            "ka"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "カ",
+        "pron": [
+            "ka"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "き",
+        "pron": [
+            "ki"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "キ",
+        "pron": [
+            "ki"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "く",
+        "pron": [
+            "ku"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ク",
+        "pron": [
+            "ku"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "け",
+        "pron": [
+            "ke"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ケ",
+        "pron": [
+            "ke"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "こ",
+        "pron": [
+            "ko"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "コ",
+        "pron": [
+            "ko"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "さ",
+        "pron": [
+            "sa"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "サ",
+        "pron": [
+            "sa"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "し",
+        "pron": [
+            "shi",
+            "si"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "シ",
+        "pron": [
+            "shi",
+            "si"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "す",
+        "pron": [
+            "su"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ス",
+        "pron": [
+            "su"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "せ",
+        "pron": [
+            "se"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "セ",
+        "pron": [
+            "se"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "そ",
+        "pron": [
+            "so"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ソ",
+        "pron": [
+            "so"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "た",
+        "pron": [
+            "ta"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "タ",
+        "pron": [
+            "ta"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ち",
+        "pron": [
+            "chi",
+            "ti"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "チ",
+        "pron": [
+            "chi",
+            "ti"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "つ",
+        "pron": [
+            "tsu",
+            "tu"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ツ",
+        "pron": [
+            "tsu",
+            "tu"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "て",
+        "pron": [
+            "te"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "テ",
+        "pron": [
+            "te"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "と",
+        "pron": [
+            "to"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ト",
+        "pron": [
+            "to"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "な",
+        "pron": [
+            "na"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ナ",
+        "pron": [
+            "na"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "に",
+        "pron": [
+            "ni"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ニ",
+        "pron": [
+            "ni"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ぬ",
+        "pron": [
+            "nu"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ヌ",
+        "pron": [
+            "nu"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ね",
+        "pron": [
+            "ne"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ネ",
+        "pron": [
+            "ne"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "の",
+        "pron": [
+            "no"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ノ",
+        "pron": [
+            "no"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "は",
+        "pron": [
+            "ha"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ハ",
+        "pron": [
+            "ha"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ひ",
+        "pron": [
+            "hi"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ヒ",
+        "pron": [
+            "hi"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ふ",
+        "pron": [
+            "fu",
+            "hu"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "フ",
+        "pron": [
+            "fu",
+            "hu"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "へ",
+        "pron": [
+            "he"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ヘ",
+        "pron": [
+            "he"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ほ",
+        "pron": [
+            "ho"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ホ",
+        "pron": [
+            "ho"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ま",
+        "pron": [
+            "ma"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "マ",
+        "pron": [
+            "ma"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "み",
+        "pron": [
+            "mi"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ミ",
+        "pron": [
+            "mi"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "む",
+        "pron": [
+            "mu"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ム",
+        "pron": [
+            "mu"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "め",
+        "pron": [
+            "me"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "メ",
+        "pron": [
+            "me"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "も",
+        "pron": [
+            "mo"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "モ",
+        "pron": [
+            "mo"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "や",
+        "pron": [
+            "ya"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ヤ",
+        "pron": [
+            "ya"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ゆ",
+        "pron": [
+            "yu"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ユ",
+        "pron": [
+            "yu"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "よ",
+        "pron": [
+            "yo"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ヨ",
+        "pron": [
+            "yo"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ら",
+        "pron": [
+            "ra"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ラ",
+        "pron": [
+            "ra"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "り",
+        "pron": [
+            "ri"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "リ",
+        "pron": [
+            "ri"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "る",
+        "pron": [
+            "ru"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ル",
+        "pron": [
+            "ru"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "れ",
+        "pron": [
+            "re"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "レ",
+        "pron": [
+            "re"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ろ",
+        "pron": [
+            "ro"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ロ",
+        "pron": [
+            "ro"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "わ",
+        "pron": [
+            "wa"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ワ",
+        "pron": [
+            "wa"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "を",
+        "pron": [
+            "o",
+            "wo"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ヲ",
+        "pron": [
+            "o",
+            "wo"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "ん",
+        "pron": [
+            "n",
+            "nn"
+        ],
+        "type": 1,
+        "range": 1
+    },
+    {
+        "kana": "ン",
+        "pron": [
+            "n",
+            "nn"
+        ],
+        "type": 1,
+        "range": 2
+    },
+    {
+        "kana": "が",
+        "pron": [
+            "ga"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ガ",
+        "pron": [
+            "ga"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぎ",
+        "pron": [
+            "gi"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ギ",
+        "pron": [
+            "gi"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぐ",
+        "pron": [
+            "gu"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "グ",
+        "pron": [
+            "gu"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "げ",
+        "pron": [
+            "ge"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ゲ",
+        "pron": [
+            "ge"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ご",
+        "pron": [
+            "go"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ゴ",
+        "pron": [
+            "go"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ざ",
+        "pron": [
+            "za"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ザ",
+        "pron": [
+            "za"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "じ",
+        "pron": [
+            "zi",
+            "ji"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ジ",
+        "pron": [
+            "zi",
+            "ji"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ず",
+        "pron": [
+            "zu"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ズ",
+        "pron": [
+            "zu"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぜ",
+        "pron": [
+            "ze"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ゼ",
+        "pron": [
+            "ze"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぞ",
+        "pron": [
+            "zo"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ゾ",
+        "pron": [
+            "zo"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "だ",
+        "pron": [
+            "da"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ダ",
+        "pron": [
+            "da"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぢ",
+        "pron": [
+            "di"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ヂ",
+        "pron": [
+            "di"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "づ",
+        "pron": [
+            "du"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ヅ",
+        "pron": [
+            "du"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "で",
+        "pron": [
+            "de"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "デ",
+        "pron": [
+            "de"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ど",
+        "pron": [
+            "do"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ド",
+        "pron": [
+            "do"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ば",
+        "pron": [
+            "ba"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "バ",
+        "pron": [
+            "ba"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "び",
+        "pron": [
+            "bi"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ビ",
+        "pron": [
+            "bi"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぶ",
+        "pron": [
+            "bu"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ブ",
+        "pron": [
+            "bu"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "べ",
+        "pron": [
+            "be"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ベ",
+        "pron": [
+            "be"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぼ",
+        "pron": [
+            "bo"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ボ",
+        "pron": [
+            "bo"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぱ",
+        "pron": [
+            "pa"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "パ",
+        "pron": [
+            "pa"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぴ",
+        "pron": [
+            "pi"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ピ",
+        "pron": [
+            "pi"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぷ",
+        "pron": [
+            "pu"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "プ",
+        "pron": [
+            "pu"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぺ",
+        "pron": [
+            "pe"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ペ",
+        "pron": [
+            "pe"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "ぽ",
+        "pron": [
+            "po"
+        ],
+        "range": 1,
+        "type": 2
+    },
+    {
+        "kana": "ポ",
+        "pron": [
+            "po"
+        ],
+        "range": 2,
+        "type": 2
+    },
+    {
+        "kana": "きゃ",
+        "pron": [
+            "kya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "キャ",
+        "pron": [
+            "kya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "きゅ",
+        "pron": [
+            "kyu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "キュ",
+        "pron": [
+            "kyu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "きょ",
+        "pron": [
+            "kyo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "キョ",
+        "pron": [
+            "kyo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "しゃ",
+        "pron": [
+            "sha",
+            "sya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "シャ",
+        "pron": [
+            "sha",
+            "sya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "しゅ",
+        "pron": [
+            "shu",
+            "syu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "シュ",
+        "pron": [
+            "shu",
+            "syu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "しょ",
+        "pron": [
+            "sho",
+            "syo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ショ",
+        "pron": [
+            "sho",
+            "syo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ちゃ",
+        "pron": [
+            "cha",
+            "cya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "チャ",
+        "pron": [
+            "cha",
+            "cya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ちゅ",
+        "pron": [
+            "chu",
+            "cyu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "チュ",
+        "pron": [
+            "chu",
+            "cyu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ちょ",
+        "pron": [
+            "cho",
+            "cyo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "チョ",
+        "pron": [
+            "cho",
+            "cyo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "にゃ",
+        "pron": [
+            "nya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ニャ",
+        "pron": [
+            "nya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "にゅ",
+        "pron": [
+            "nyu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ニュ",
+        "pron": [
+            "nyu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "にょ",
+        "pron": [
+            "nyo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ニョ",
+        "pron": [
+            "nyo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ひゃ",
+        "pron": [
+            "hya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ヒャ",
+        "pron": [
+            "hya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ひゅ",
+        "pron": [
+            "hyu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ヒュ",
+        "pron": [
+            "hyu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ひょ",
+        "pron": [
+            "hyo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ヒョ",
+        "pron": [
+            "hyo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "みゃ",
+        "pron": [
+            "mya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ミャ",
+        "pron": [
+            "mya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "みゅ",
+        "pron": [
+            "myu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ミュ",
+        "pron": [
+            "myu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "みょ",
+        "pron": [
+            "myo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ミョ",
+        "pron": [
+            "myo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "りゃ",
+        "pron": [
+            "rya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "リャ",
+        "pron": [
+            "rya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "りゅ",
+        "pron": [
+            "ryu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "リュ",
+        "pron": [
+            "ryu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "りょ",
+        "pron": [
+            "ryo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "リョ",
+        "pron": [
+            "ryo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ぎゃ",
+        "pron": [
+            "gya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ギャ",
+        "pron": [
+            "gya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ぎゅ",
+        "pron": [
+            "gyu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ギュ",
+        "pron": [
+            "gyu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ぎょ",
+        "pron": [
+            "gyo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ギョ",
+        "pron": [
+            "gyo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "びゃ",
+        "pron": [
+            "bya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ビャ",
+        "pron": [
+            "bya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "びゅ",
+        "pron": [
+            "byu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ビュ",
+        "pron": [
+            "byu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "びょ",
+        "pron": [
+            "byo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ビョ",
+        "pron": [
+            "byo"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ぴゃ",
+        "pron": [
+            "pya"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ピャ",
+        "pron": [
+            "pya"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ぴゅ",
+        "pron": [
+            "pyu"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ピュ",
+        "pron": [
+            "pyu"
+        ],
+        "range": 2,
+        "type": 3
+    },
+    {
+        "kana": "ぴょ",
+        "pron": [
+            "pyo"
+        ],
+        "range": 1,
+        "type": 3
+    },
+    {
+        "kana": "ピョ",
+        "pron": [
+            "pyo"
+        ],
+        "range": 2,
+        "type": 3
+    }
+]

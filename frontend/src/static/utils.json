@@ -1,0 +1,151 @@
+[
+    {
+        "id": "cps-tester",
+        "name": "鼠标点击速度测试",
+        "description": "在线的鼠标点击速度测试，支持平均、实时两种测算模式。",
+        "icon": "mouse",
+        "tags": [
+            "measure"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "mc-color-gen",
+        "name": "MC 十六进制颜色渐变生成",
+        "description": "MC 高版本加入了十六进制颜色转义，本工具可以输出丝滑的彩色渐变文本。",
+        "icon": "palette",
+        "tags": [
+            "generate"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "uuid-gen",
+        "name": "UUID 生成",
+        "description": "UUID 在线生成器。",
+        "icon": "label",
+        "tags": [
+            "generate",
+            "develop"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "ja-kana-quiz",
+        "name": "日文假名记忆测试",
+        "description": "日文学习辅助工具。这是一个系统生成假名、用户输入罗马音的小测试，可用于检验对假名的掌握程度。",
+        "icon": "language_japanese_kana",
+        "tags": [
+            "quiz",
+            "language"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "spg",
+        "name": "强密码生成",
+        "description": "快速生成强密码，支持字符自定义。",
+        "icon": "key_vertical",
+        "tags": [
+            "generate",
+            "random"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "rand-gen",
+        "name": "随机数生成",
+        "description": "简单的在线随机数生成器。",
+        "icon": "casino",
+        "tags": [
+            "generate",
+            "random"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "bpm-tapper",
+        "name": "BPM 测算",
+        "description": "通过点击按钮来测算 BPM。",
+        "icon": "headphones",
+        "tags": [
+            "measure",
+            "music"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "aime-generator",
+        "name": "AIME 卡号生成",
+        "description": "一键生成 AIME 卡号及其数组形式。",
+        "icon": "credit_card",
+        "tags": [
+            "generate"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "a1z26",
+        "name": "A1Z26 加解密",
+        "description": "将字母按 A1Z26 的顺序转写成数字，或是反向解密。",
+        "icon": "sort_by_alpha",
+        "tags": [
+            "password"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "hash",
+        "name": "哈希值计算",
+        "description": "计算字符串的哈希值。",
+        "icon": "numbers",
+        "tags": [
+            "password",
+            "develop"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "base64",
+        "name": "base64 编解码",
+        "description": "将字符串编码为 base64，或解码 base64 字符串。",
+        "icon": "equal",
+        "tags": [
+            "password",
+            "develop"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "regex",
+        "name": "正则表达式",
+        "description": "使用正则表达式进行字符串匹配和替换。",
+        "icon": "regular_expression",
+        "tags": [
+            "develop"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "crontab",
+        "name": "Crontab 表达式",
+        "description": "生成 Crontab 表达式，并可视化执行时间。",
+        "icon": "schedule",
+        "tags": [
+            "time",
+            "develop"
+        ],
+        "contributor": "RLt"
+    },
+    {
+        "id": "timestamp",
+        "name": "时间戳转换",
+        "description": "将时间戳转换为日期时间格式，或反之。",
+        "icon": "av_timer",
+        "tags": [
+            "time",
+            "develop"
+        ],
+        "contributor": "RLt"
+    }
+]

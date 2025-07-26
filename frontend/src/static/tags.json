@@ -1,0 +1,57 @@
+[
+    {
+        "id": "measure",
+        "name": "测量",
+        "icon": "straighten"
+    },
+    {
+        "id": "random",
+        "name": "随机",
+        "icon": "casino"
+    },
+    {
+        "id": "generate",
+        "name": "生成",
+        "icon": "controller_gen"
+    },
+    {
+        "id": "entertain",
+        "name": "娱乐",
+        "icon": "mood"
+    },
+    {
+        "id": "quiz",
+        "name": "测验",
+        "icon": "quiz"
+    },
+    {
+        "id": "music",
+        "name": "乐理",
+        "icon": "music_note"
+    },
+    {
+        "id": "password",
+        "name": "加密",
+        "icon": "calculate"
+    },
+    {
+        "id": "time",
+        "name": "时间",
+        "icon": "timer"
+    },
+    {
+        "id": "develop",
+        "name": "开发",
+        "icon": "code"
+    },
+    {
+        "id": "language",
+        "name": "语言",
+        "icon": "language"
+    },
+    {
+        "id": "wip",
+        "name": "WIP",
+        "icon": "construction"
+    }
+]

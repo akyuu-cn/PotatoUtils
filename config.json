@@ -1,8 +1,0 @@
-{
-    "//port": "PotatoUtils 运行端口",
-    "port": 33010,
-    "//sitename": "显示在网页标题上的名称",
-    "sitename": "Potato Utils",
-    "//debuglog": "是否输出调试日志",
-    "debuglog": false
-}

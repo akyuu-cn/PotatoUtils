@@ -1,0 +1,41 @@
+@import "material-symbols/outlined.css";
+
+.material-symbols-animated {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 16;
+  transition: font-variation-settings 250ms ease;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.material-symbols-animated-parent:hover .material-symbols-animated {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 16;
+}
+
+.button-card-bg-icon-rotate {
+  transition: transform 250ms ease, font-size 250ms ease, font-variation-settings 100ms ease;
+  font-variation-settings: 'FILL' 0;
+  font-size: 128px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button-card-bg-icon-rotate-parent:hover .button-card-bg-icon-rotate {
+  transform: rotate(20deg);
+  font-size: 140px !important;
+  font-variation-settings: 'FILL' 1;
+}
+
+.button-card-bg-icon-rotate-mirror {
+  transition: transform 250ms ease, font-size 250ms ease, font-variation-settings 100ms ease;
+  transform: scaleX(-1);
+  font-variation-settings: 'FILL' 0;
+  font-size: 128px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.button-card-bg-icon-rotate-parent:hover .button-card-bg-icon-rotate-mirror {
+  transform: rotate(20deg) scaleX(-1);
+  font-size: 140px !important;
+  font-variation-settings: 'FILL' 1;
+}
