@@ -5,12 +5,15 @@ import App from "./App"
 import "./index.css"
 import "./icon.css"
 import { ThemeProvider } from "./components/theme-provider"
+import { HelmetProvider } from "react-helmet-async"
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
     <React.StrictMode>
         <BrowserRouter>
             <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-                <App />
+                <HelmetProvider>
+                    <App />
+                </HelmetProvider>
             </ThemeProvider>
         </BrowserRouter>
     </React.StrictMode>

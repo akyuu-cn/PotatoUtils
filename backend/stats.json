@@ -1,10 +1,10 @@
 {
-  "/dashboard": 32,
+  "/dashboard": 33,
   "/stats": 34,
   "/util/spg": 5,
   "/util/spgs": 1,
   "/util/uuid-gen": 4,
-  "/util/cps-tester": 4,
+  "/util/cps-tester": 6,
   "/util/mc-color-gen": 2,
   "/util/ja-kana-quiz": 1,
   "/util/rand-gen": 1,

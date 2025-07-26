@@ -1,6 +1,7 @@
 import utils from "@/static/utils.json"
 
 import { Card } from "@/components/ui/card"
+import { Helmet } from "react-helmet-async"
 
 
 export default function RenameMe() {
@@ -13,6 +14,11 @@ export default function RenameMe() {
 
     return (
         <div className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
 
             <Card className="card mb-4">
                 <h1 className="flex items-center">

@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { useEffect, useState, useRef } from "react"
 import { Button } from "@/components/ui/button"
+import { Helmet } from "react-helmet-async"
 
 export default function BpmTapper() {
     const ID = "bpm-tapper"
@@ -91,6 +92,11 @@ export default function BpmTapper() {
 
     return (
         <div className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
 
             <Card className="card mb-4">
                 <h1 className="flex items-center">

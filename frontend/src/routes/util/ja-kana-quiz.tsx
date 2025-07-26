@@ -11,6 +11,7 @@ import { Bar, BarChart, CartesianGrid, Cell, XAxis, YAxis } from "recharts"
 
 import { useEffect, useRef, useState } from "react"
 import { Progress } from "@/components/ui/progress"
+import { Helmet } from "react-helmet-async"
 
 interface Kana {
     kana: string
@@ -77,6 +78,12 @@ export default function JaKanaQuiz() {
 
     return (
         <div className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
+
             <Card className="card mb-4">
                 <h1 className="flex items-center">
                     <span className="material-symbols-outlined mr-2">{UTIL.icon}</span>

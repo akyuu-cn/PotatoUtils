@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { useEffect, useState } from "react"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Checkbox } from "@/components/ui/checkbox"
+import { Helmet } from "react-helmet-async"
 
 
 export default function McColorGen() {
@@ -100,6 +101,11 @@ export default function McColorGen() {
 
     return (
         <div id="dashboard" className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
 
             <Card className="relative overflow-hidden card mb-4">
                 <h1 className="flex items-center">

@@ -5,6 +5,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { useEffect, useState } from "react"
 import { Input } from "@/components/ui/input"
+import { Helmet } from "react-helmet-async"
 
 export default function UuidGen() {
     const ID = "uuid-gen"
@@ -41,6 +42,11 @@ export default function UuidGen() {
     return (
         <div className="mx-auto w-full max-w-screen-lg">
 
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
+
             <Card className="card mb-4">
                 <h1 className="flex items-center">
                     <span className="material-symbols-outlined mr-2">{UTIL.icon}</span>
@@ -73,7 +79,7 @@ export default function UuidGen() {
                             className="material-symbols-outlined material-symbols-animated"
                         >{copyIconSingle}</span>
                     </Button>
-                    
+
                     <code className="opacity-90 text-2xl ml-4">{outputSingle}</code>
                 </div>
             </Card>

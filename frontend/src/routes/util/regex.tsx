@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
+import { Helmet } from "react-helmet-async"
 
 export default function Regex() {
     const ID = "regex"
@@ -62,6 +63,11 @@ export default function Regex() {
 
     return (
         <div className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
 
             {/* Header */}
             <Card className="card mb-4">

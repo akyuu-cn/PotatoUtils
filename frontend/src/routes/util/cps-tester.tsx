@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Progress } from "@/components/ui/progress"
 import { useEffect, useRef, useState } from "react"
+import { Helmet } from "react-helmet-async"
 
 export default function CpsTester() {
     const ID = "cps-tester"
@@ -83,6 +84,11 @@ export default function CpsTester() {
 
     return (
         <div className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
 
             <Card className="relative overflow-hidden card mb-4">
                 <h1 className="flex items-center">

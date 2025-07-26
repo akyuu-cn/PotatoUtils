@@ -13,8 +13,8 @@ export default function TopBar() {
     return (
         <nav className="h-16 p-2 px-6 flex rounded-b-lg items-center">
             <div onClick={() => { navigate("/dashboard"); hideLaunchpad() }} className='flex h-full gap-3 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-800 pr-2 rounded-md text-neutral-800 dark:text-neutral-200'>
-                <div className="h-full p-1.5 rounded-sm -mr-1">
-                    <img className="h-full opacity-80" src="/logo.ico"></img>
+                <div className="w-12 h-12 p-1.5 rounded-sm -mr-1">
+                    <img className="w-full h-full object-contain opacity-80" src="/logo.ico" alt="logo" />
                 </div>
                 <div className='font-mono'>
                     <div className='text-xl font-semibold text-nowrap'>

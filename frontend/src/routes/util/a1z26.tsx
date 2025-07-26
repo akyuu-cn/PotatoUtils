@@ -8,6 +8,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
+import { Helmet } from "react-helmet-async"
 
 const cleanInput = (input: string) => input.replace(/[^a-zA-Z]/g, "")
 
@@ -99,6 +100,11 @@ export default function A1z26() {
     return (
         <div className="mx-auto w-full max-w-screen-lg">
 
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
+
             <Card className="card mb-4">
                 <h1 className="flex items-center">
                     <span className="material-symbols-outlined mr-2">{UTIL.icon}</span>
@@ -178,7 +184,7 @@ export default function A1z26() {
                     <span className="material-symbols-outlined mr-2">settings</span>
                     选项
                 </h2>
-                
+
                 <div className="mb-3 opacity-75">
                     编码
                 </div>

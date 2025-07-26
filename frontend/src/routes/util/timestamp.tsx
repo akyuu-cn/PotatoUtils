@@ -11,6 +11,7 @@ import { ChevronDownIcon } from "lucide-react"
 import { Calendar } from "@/components/ui/calendar"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { Helmet } from "react-helmet-async"
 
 export default function Timestamp() {
     const ID = "timestamp"
@@ -110,6 +111,11 @@ export default function Timestamp() {
 
     return (
         <div className="mx-auto w-full max-w-screen-lg">
+
+            <Helmet>
+                <title>{UTIL.name} - Potato Utils</title>
+                <meta name="description" content={UTIL.description} />
+            </Helmet>
 
             <Card className="card mb-4">
                 <h1 className="flex items-center">
