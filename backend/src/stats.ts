@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import dayjs from 'dayjs'
-import { IP_LIMIT_WINDOW_MS, IP_LIMIT_COUNT, STATS_FILE, BACKUP_DIR, BACKUP_KEEP_COUNT } from './config.js'
+import { IP_LIMIT_WINDOW_MS, IP_LIMIT_COUNT, STATS_FILE, BACKUP_DIR, BACKUP_KEEP_COUNT,LIMIT_ENABLED } from './config.js'
 
 
 
@@ -24,7 +24,7 @@ export function incrementPath(pathname: string, ip: string) {
     }
 
     // 是否超出限制
-    if (recent.length >= IP_LIMIT_COUNT) return false
+    if (LIMIT_ENABLED && recent.length >= IP_LIMIT_COUNT) return false
 
     // 添加新时间戳并写回
     recent.push(now)
