@@ -8,6 +8,7 @@ import { useEffect, useState } from "react"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Helmet } from "react-helmet-async"
+import { Button } from "@/components/ui/button"
 
 
 export default function McColorGen() {
@@ -26,6 +27,7 @@ export default function McColorGen() {
     const [underlined, setUnderlined] = useState(false)
     const [strikethrough, setStrikethrough] = useState(false)
     const [obfuscated, setObfuscated] = useState(false)
+    const [copyIconOutput, setCopyIconOutput] = useState("content_copy")
 
     useEffect(() => {
         const handler = setTimeout(() => {
@@ -144,9 +146,23 @@ export default function McColorGen() {
                         </span>
                     ))}
                 </span>
-                <Textarea className="mt-8" readOnly value={output}>
 
+                <Textarea className="mt-8" readOnly value={output}>
                 </Textarea>
+
+                <Button variant="ghost" className="ml-auto mt-2 opacity-90 material-symbols-animated-parent" onClick={() => {
+                    navigator.clipboard.writeText(output)
+                    setCopyIconOutput("check")
+                    setTimeout(() => {
+                        setCopyIconOutput("content_copy")
+                    }, 1000)
+                }}>
+                    <span
+                        className="material-symbols-outlined material-symbols-animated"
+                    >{copyIconOutput}</span>
+                    复制内容
+                </Button>
+                
             </Card>
 
             <Card className="mb-4 card">
