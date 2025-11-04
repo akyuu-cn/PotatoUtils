@@ -147,5 +147,15 @@
             "develop"
         ],
         "contributor": "RLt"
+    },
+    {
+        "id": "ppi-calc",
+        "name": "图像 PPI 计算器",
+        "description": "面向出版印刷的图像 PPI 计算器，支持计算图像在目标尺寸下的 PPI ，或是在目标比例与 PPI 下的图像分辨率。",
+        "icon": "image_search",
+        "tags": [
+            "design"
+        ],
+        "contributor": "RLt"
     }
 ]

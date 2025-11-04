@@ -14,6 +14,7 @@ import Crontab from "./routes/util/crontab"
 import Welcome from "./components/Welcome"
 import { usePageTracker } from "./hooks/usePageTracker"
 import Stats from "./routes/Stats"
+import { TooltipProvider } from "@radix-ui/react-tooltip"
 
 const CpsTester = lazyWithProgress(() => import("./routes/util/cps-tester"))
 const McColorGen = lazyWithProgress(() => import("./routes/util/mc-color-gen"))
@@ -28,6 +29,8 @@ const Base64 = lazyWithProgress(() => import("./routes/util/base64"))
 const Timestamp = lazyWithProgress(() => import("./routes/util/timestamp"))
 const Hash = lazyWithProgress(() => import("./routes/util/hash"))
 const Regex = lazyWithProgress(() => import("./routes/util/regex"))
+const PpiCalc = lazyWithProgress(() => import("./routes/util/ppi-calc"))
+
 
 function App() {
     usePageTracker()
@@ -37,32 +40,35 @@ function App() {
                 <TopBar />
                 <main id="main-content" className="p-4 fixed inset-0 top-16 overflow-y-auto">
                     <Suspense fallback={<Loading />}>
-                        <Routes>
-                            <Route path="/" element={<Navigate to="/dashboard" />} />
-                            <Route path="/dashboard" element={<Dashboard />} />
-                            <Route path="/stats" element={<Stats />} />
+                        <TooltipProvider>
+                            <Routes>
+                                <Route path="/" element={<Navigate to="/dashboard" />} />
+                                <Route path="/dashboard" element={<Dashboard />} />
+                                <Route path="/stats" element={<Stats />} />
 
 
-                            {/* 向后兼容 */}
-                            <Route path="/utils/*" element={<LegacyRedirect />} />
+                                {/* 向后兼容 */}
+                                <Route path="/utils/*" element={<LegacyRedirect />} />
 
-                            <Route path="/util/cps-tester" element={<CpsTester />} />
-                            <Route path="/util/mc-color-gen" element={<McColorGen />} />
-                            <Route path="/util/uuid-gen" element={<UuidGen />} />
-                            <Route path="/util/ja-kana-quiz" element={<JaKanaQuiz />} />
-                            <Route path="/util/spg" element={<Spg />} />
-                            <Route path="/util/rand-gen" element={<RandGen />} />
-                            <Route path="/util/aime-generator" element={<AimeGenerator />} />
-                            <Route path="/util/bpm-tapper" element={<BpmTapper />} />
-                            <Route path="/util/a1z26" element={<A1z26 />} />
-                            <Route path="/util/base64" element={<Base64 />} />
-                            <Route path="/util/timestamp" element={<Timestamp />} />
-                            <Route path="/util/hash" element={<Hash />} />
-                            <Route path="/util/regex" element={<Regex />} />
-                            <Route path="/util/crontab" element={<Crontab />} />
+                                <Route path="/util/cps-tester" element={<CpsTester />} />
+                                <Route path="/util/mc-color-gen" element={<McColorGen />} />
+                                <Route path="/util/uuid-gen" element={<UuidGen />} />
+                                <Route path="/util/ja-kana-quiz" element={<JaKanaQuiz />} />
+                                <Route path="/util/spg" element={<Spg />} />
+                                <Route path="/util/rand-gen" element={<RandGen />} />
+                                <Route path="/util/aime-generator" element={<AimeGenerator />} />
+                                <Route path="/util/bpm-tapper" element={<BpmTapper />} />
+                                <Route path="/util/a1z26" element={<A1z26 />} />
+                                <Route path="/util/base64" element={<Base64 />} />
+                                <Route path="/util/timestamp" element={<Timestamp />} />
+                                <Route path="/util/hash" element={<Hash />} />
+                                <Route path="/util/regex" element={<Regex />} />
+                                <Route path="/util/crontab" element={<Crontab />} />
+                                <Route path="/util/ppi-calc" element={<PpiCalc />} />
 
-                            <Route path="*" element={<NotFound />} />
-                        </Routes>
+                                <Route path="*" element={<NotFound />} />
+                            </Routes>
+                        </TooltipProvider>
                     </Suspense>
                 </main>
                 <Launchpad ref={launchpadRef} />

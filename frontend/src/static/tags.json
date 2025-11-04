@@ -50,6 +50,11 @@
         "icon": "language"
     },
     {
+        "id": "design",
+        "name": "设计",
+        "icon": "design_services"
+    },
+    {
         "id": "wip",
         "name": "WIP",
         "icon": "construction"
