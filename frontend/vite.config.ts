@@ -25,6 +25,7 @@ export default defineConfig({
                         if (id.includes('crypto-js')) return 'crypto-js'
                         if (id.includes('luxon')) return 'luxon'
                         if (id.includes('lodash')) return 'lodash'
+                        if (id.includes('pinyin-pro')) return 'pinyin-pro'
                         return 'vender'
                     }
                 }
