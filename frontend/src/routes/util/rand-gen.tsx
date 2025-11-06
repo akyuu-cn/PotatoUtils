@@ -30,6 +30,7 @@ export default function RandGen() {
     const [hideSingle, setHideSingle] = useState(true)
     const [hideMulti, setHideMulti] = useState(true)
     const [alwaysShow, setAlwaysShow] = useState(false)
+    const [noRepeat, setNoRepeat] = useState(false)
 
     useEffect(() => {
         if (mode === "1") {
@@ -44,11 +45,11 @@ export default function RandGen() {
         }
         genSingle()
         genMulti()
-    }, [mode, min, max, alwaysShow])
+    }, [mode, min, max, alwaysShow, noRepeat])
 
     useEffect(() => {
         genMulti()
-    }, [count, split, alwaysShow])
+    }, [count, split, alwaysShow, noRepeat])
 
     function genSingle() {
         setOutputSingle(random(min, max).toString())
@@ -56,15 +57,30 @@ export default function RandGen() {
     }
 
     function genMulti() {
-        let _ = []
+        let _: string[] = []
         if (count <= 0) {
             setOutputMulti("")
         } else if (count > 1000 || length > 50) {
             setOutputMulti("diannaobaozhale")
         } else {
-            for (let i = 0; i < count; i++) {
-                _.push(random(min, max).toString())
+            if (noRepeat) {
+                const range = max - min + 1
+                if (range < count) {
+                    setOutputMulti("随机数范围小于生成数量，无法生成不重复随机数")
+                    return
+                }
+
+                const s = new Set<string>()
+                while (s.size < count) {
+                    s.add(random(min, max).toString())
+                }
+                _ = Array.from(s)
+            } else {
+                for (let i = 0; i < count; i++) {
+                    _.push(random(min, max).toString())
+                }
             }
+
             setOutputMulti(_.join(split))
             setHideMulti(!alwaysShow)
         }
@@ -195,6 +211,11 @@ export default function RandGen() {
 
                         </Button>
 
+                        <div className="flex gap-2 ml-4">
+                            <Switch id="always-show" checked={noRepeat} onCheckedChange={setNoRepeat} />
+                            <Label htmlFor="always-show">不重复</Label>
+                        </div>
+
 
                         <div className="opacity-75 ml-4">
                             生成
@@ -230,6 +251,8 @@ export default function RandGen() {
                         <div className="opacity-75">
                             分割
                         </div>
+
+
 
                     </div>
                     <div className={hideMulti ? "secret-container" : ""} onClick={() => { setHideMulti(false) }}>

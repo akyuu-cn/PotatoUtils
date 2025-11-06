@@ -13,7 +13,6 @@ export default function PpiCalc() {
     const UTIL = utils.find(u => u.id === ID)
     if (!UTIL) return null
 
-    // ---------- 状态 ----------
     const [pxW, setPxW] = useState<number | undefined>()
     const [pxH, setPxH] = useState<number | undefined>()
     const [mmW, setMmW] = useState<number | undefined>()
@@ -30,7 +29,6 @@ export default function PpiCalc() {
         setMmH(undefined)
     }, [manualResolution])
 
-    // ---------- 自动维持图片比例 ----------
     const handleMmWidthChange = (v: number) => {
         setMmW(v)
         if (lockRatio && pxW && pxH) {
@@ -47,13 +45,13 @@ export default function PpiCalc() {
         }
     }
 
-    // ---------- 上传图片获取分辨率 ----------
-    const onSelectImage = async (file: File) => {
+    const onSelectImage = (file: File) => {
         const img = new Image()
+        img.onload = () => {
+            setPxW(img.width)
+            setPxH(img.height)
+        }
         img.src = URL.createObjectURL(file)
-        await img.decode()
-        setPxW(img.width)
-        setPxH(img.height)
     }
 
     const onDrop = (e: React.DragEvent<HTMLDivElement>) => {
@@ -63,7 +61,6 @@ export default function PpiCalc() {
         }
     }
 
-    // ---------- 计算有效 PPI ----------
     const calcPPI = () => {
         if (!pxW || !pxH || !mmW || !mmH) return 0
         const inchW = mmW / 25.4
@@ -75,7 +72,7 @@ export default function PpiCalc() {
 
     const ppi = calcPPI()
 
-    // ---------- 第二模块：反向计算目标分辨率 ----------
+
     const [targetPPI, setTargetPPI] = useState<number | undefined>(300)
     const [ratioW, setRatioW] = useState<number | undefined>()
     const [ratioH, setRatioH] = useState<number | undefined>()
@@ -124,7 +121,6 @@ export default function PpiCalc() {
                 <div className="mt-2 opacity-75">{UTIL.description}</div>
             </Card>
 
-            {/* ----------- 第一块：计算有效PPI ----------- */}
             <Card className="card mb-4">
                 <h2 className="flex items-center mb-4!">
                     <span className="material-symbols-outlined mr-2">settings</span>
@@ -219,7 +215,6 @@ export default function PpiCalc() {
                 </div>
             </Card>
 
-            {/* ----------- 第二块：计算需要的像素 ----------- */}
             <Card className="card mb-4">
                 <h2 className="flex items-center mb-4!">
                     <span className="material-symbols-outlined mr-2">settings</span>

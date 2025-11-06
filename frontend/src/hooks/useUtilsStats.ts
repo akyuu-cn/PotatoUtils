@@ -26,6 +26,7 @@ export function useUtilsStats() {
                     const match = path.match(/^\/util\/([^/]+)$/)
                     return match && validIds.includes(match[1])
                 })
+                .sort((a, b) => b[1] - a[1])
                 .map(([path, visitors], index) => {
                     const id = path.split('/').pop()!
                     const color = colorList[index % colorList.length]
