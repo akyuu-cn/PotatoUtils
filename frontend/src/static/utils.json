@@ -157,5 +157,16 @@
             "design"
         ],
         "contributor": "RLt"
+    },
+    {
+        "id": "encoding-mapper",
+        "name": "文本编码映射器",
+        "description": "用于处理乱码字符串，对其通过不同的输入 & 输出编码格式进行映射分析。",
+        "icon": "swap_horizontal_circle",
+        "tags": [
+            "develop",
+            "password"
+        ],
+        "contributor": "RLt"
     }
 ]
