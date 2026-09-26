@@ -63,7 +63,9 @@ const Launchpad = forwardRef((_, ref) => {
                                         return true
                                     }
                                     return util.tags.includes(activeTag)
-                                }).map(util => (
+                                })
+                                .reverse() // 让新加入的工具在最上边
+                                .map(util => (
                                     <Card
                                         key={util.id}
                                         className="p-7 card-clickable relative overflow-hidden button-card-bg-icon-rotate-parent"
