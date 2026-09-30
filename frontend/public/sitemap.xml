@@ -54,4 +54,10 @@
   <url>
     <loc>https://utils.akyuu.cn/util/ppi-calc</loc>
   </url>
+  <url>
+    <loc>https://utils.akyuu.cn/util/encoding-mapper</loc>
+  </url>
+  <url>
+    <loc>https://utils.akyuu.cn/util/qr-code</loc>
+  </url>
 </urlset>
