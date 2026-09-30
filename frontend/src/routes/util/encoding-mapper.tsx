@@ -10,9 +10,11 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table"
+import ComputingSign from "@/components/ComputingSign"
 
 import { Helmet } from "react-helmet-async"
 import { useEffect, useMemo, useRef, useState } from "react"
+
 
 const ENCODINGS = [
     { name: "UTF-8", label: "utf-8" },
@@ -275,10 +277,7 @@ export default function EncodingMapper() {
                 <h2 className="flex items-center mb-8!">
                     <span className="material-symbols-outlined mr-2">table</span>
                     编码映射表
-                    {computing && <span className="ml-3 text-sm font-normal opacity-60 flex items-center">
-                        <span className="material-symbols-outlined mr-1 animate-spin">progress_activity</span>
-                        处理中…
-                    </span>}
+                    {computing && <ComputingSign />}
                 </h2>
                 <div className="overflow-x-auto">
                     {usingFile ? (

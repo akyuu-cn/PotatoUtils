@@ -5,13 +5,12 @@ import { Helmet } from "react-helmet-async"
 
 
 export default function RenameMe() {
-    const ID = ""
+    const ID = "YOUR_ID_HERE"
     const UTIL = utils.find(u => u.id === ID)
-
-    //
-
     if (!UTIL) { return null }
-
+    
+    // Your codes here
+    
     return (
         <div className="mx-auto w-full max-w-screen-lg">
 
@@ -26,11 +25,13 @@ export default function RenameMe() {
                     {UTIL.name}
                 </h1>
                 <div className="mt-2 opacity-75">
-
+                    {UTIL.description}
                 </div>
             </Card>
 
             <Card className="card mb-4">
+
+                {/* Your contents here */}
 
             </Card>
 

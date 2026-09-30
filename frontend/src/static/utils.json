@@ -168,5 +168,17 @@
             "password"
         ],
         "contributor": "RLt"
+    },
+    {
+        "id": "qr-code",
+        "name": "二维码生成器",
+        "description": "将信息转换为二维码。",
+        "icon": "qr_code",
+        "tags": [
+            "generate",
+            "develop",
+            "design"
+        ],
+        "contributor": "RLt"
     }
 ]

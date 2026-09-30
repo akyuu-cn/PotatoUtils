@@ -31,6 +31,7 @@ const Hash = lazyWithProgress(() => import("./routes/util/hash"))
 const Regex = lazyWithProgress(() => import("./routes/util/regex"))
 const PpiCalc = lazyWithProgress(() => import("./routes/util/ppi-calc"))
 const EncodingMapper = lazyWithProgress(() => import("./routes/util/encoding-mapper"))
+const QrCode = lazyWithProgress(() => import("./routes/util/qr-code"))
 
 
 function App() {
@@ -67,6 +68,7 @@ function App() {
                                 <Route path="/util/crontab" element={<Crontab />} />
                                 <Route path="/util/ppi-calc" element={<PpiCalc />} />
                                 <Route path="/util/encoding-mapper" element={<EncodingMapper />} />
+                                <Route path="/util/qr-code" element={<QrCode />} />
 
                                 <Route path="*" element={<NotFound />} />
                             </Routes>
