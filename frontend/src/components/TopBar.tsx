@@ -37,7 +37,7 @@ export default function TopBar() {
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             // 聚焦搜索框
-            if (e.key === "/") {
+            if ((e.ctrlKey || e.metaKey) && e.key === "/") {
                 e.preventDefault()
                 setShowSearchResult(true)
                 searchInputRef.current?.focus()
@@ -134,8 +134,8 @@ export default function TopBar() {
 
             <div className="hidden sm:block relative w-50 max-w-sm ml-2" ref={searchRef}>
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground pointer-events-none" />
-                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground pointer-events-none border-1 rounded-sm text-[10px] flex items-center justify-center">
-                    /
+                <div className="absolute right-3 top-1/2 -translate-y-1/2 w-11 h-5 text-muted-foreground pointer-events-none border-1 rounded-sm text-[10px] flex items-center justify-center">
+                    Ctrl + /
                 </div>
 
                 <Input

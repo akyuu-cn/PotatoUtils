@@ -77,7 +77,7 @@ function App() {
                 </main>
                 <Launchpad ref={launchpadRef} />
             </div>
-            <Welcome />
+            {/* <Welcome /> */}
         </>
     )
 }
